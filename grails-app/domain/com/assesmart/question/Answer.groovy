@@ -12,4 +12,8 @@ class Answer {
         answer nullable: true, blank: false
         correctAnswer nullable: true
     }
+
+    String toString(){
+        return answer
+    }
 }

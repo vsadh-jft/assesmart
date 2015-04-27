@@ -1,7 +1,6 @@
 <%@ page import="com.assesmart.question.Question;com.assesmart.enumeration.QuestionType" %>
 
-
-
+${questionInstance.questionType.toString()}
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'answers', 'error')} ">
     <label for="answers">
         <g:message code="question.answers.label" default="Answers" />
@@ -34,17 +33,21 @@
         <span class="required-indicator">*</span>
     </label>
     <g:select id="itemBank" name="itemBank.id" from="${com.assesmart.question.ItemBank.list()}" optionKey="id" required="" value="${questionInstance?.itemBank?.id}" class="many-to-one"/>
-
 </div>
-<g:hiddenField name="questionType" value="${questionType}" />
 
+<g:hiddenField name="questionType" value="${questionType!=null?questionType:questionInstance.questionType}" />
+<g:if test="${questionInstance?.id>0}">
+    <g:set var="questionType" value="${questionInstance.questionType.toString()}"></g:set>
+</g:if>
 <g:if test="${questionType==QuestionType.MULTIPLE_CHOICE.toString()}">
     <div id="multichoice">
-        <g:render template="mutipleChoice" model="[answerIndex:1]"/>
+        <g:render template="mutipleChoice" model="[answerIndex:0]"/>
     </div>
 </g:if>
 <g:elseif test="${questionType==QuestionType.MULTIPLE_SELECT.toString()}">
-    <g:render template="multipleSelect" />
+    <div id="multipleSelect">
+        <g:render template="multipleSelect" model="[answerIndex:0]" />
+    </div>
 </g:elseif>
 
 <a href="#" onclick="addAnswer('${questionType}');">
@@ -62,7 +65,11 @@
             data: {answerIndex: i,questionType:questionType},
             cache: false,
             success: function(html) {
-                $('div[id="multichoice"]').append(html);
+                if(questionType=='MULTIPLE_CHOICE'){
+                    $('div[id="multichoice"]').append(html);
+                }else if(questionType=='MULTIPLE_SELECT'){
+                    $('div[id="multipleSelect"]').append(html);
+                }
             }
         });
     }

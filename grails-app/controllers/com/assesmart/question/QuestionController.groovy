@@ -39,10 +39,14 @@ class QuestionController {
             notFound()
             return
         }
-        println QuestionType.MULTIPLE_CHOICE
         if(str.equals(QuestionType.MULTIPLE_CHOICE.toString())){
             List answers = params.list('answer')
             Integer correctAnswer = params.int('correctAnswer')
+            if(correctAnswer==null){
+                flash.message='There must be atleast one correct answer'
+                render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
+                return
+            }
             List<Answer> answersList = new LinkedList<Answer>();
             for(String s:answers){
                 if(s==''){
@@ -52,24 +56,28 @@ class QuestionController {
                 }
                 Answer answer =new Answer();
                 answer.setAnswer(s)
-                answer.setCorrectAnswer(answers.get(correctAnswer).equals(s)?true:false)
+                answer.setCorrectAnswer(answers.get(correctAnswer-1).equals(s)?true:false)
                 answer.setQuestion(questionInstance)
                 answersList.add(answer)
             }
             questionInstance.setAnswers(answersList)
         }else if(str.equals(QuestionType.MULTIPLE_SELECT.toString())){
             List answers = params.list('answer')
-            Integer correctAnswer = params.int('correctAnswer')
+            List<Integer> correctAnswers = params.list('correctAnswer')
+            correctAnswers.each {println it}
             List<Answer> answersList = new LinkedList<Answer>();
+            int i =0;
             for(String s:answers){
+                println "inside for....."
                 Answer answer =new Answer();
                 answer.setAnswer(s)
-                answer.setCorrectAnswer(answers.get(correctAnswer).equals(s)?true:false)
+                answer.setCorrectAnswer(correctAnswers.contains(correctAnswers.get(0))?true:false)
                 answer.setQuestion(questionInstance)
                 answersList.add(answer)
+                i++;
             }
+            questionInstance.setAnswers(answersList)
         }
-
 
         if (questionInstance.hasErrors()) {
             respond questionInstance.errors, view: 'create'
@@ -88,8 +96,13 @@ class QuestionController {
     }
 
     def addAnswer(){
-        println "here..."
-        render template: 'mutipleChoice' , model: [answerIndex:params.answerIndex]
+        String str = params.questionType
+        println params
+        if(str==QuestionType.MULTIPLE_CHOICE.toString()){
+            render template: 'mutipleChoice' , model: [answerIndex:params.answerIndex]
+        }else if(str==QuestionType.MULTIPLE_SELECT.toString()){
+            render template: 'multipleSelect' , model: [answerIndex:params.answerIndex]
+        }
     }
 
     def edit(Question questionInstance) {
@@ -98,6 +111,8 @@ class QuestionController {
 
     @Transactional
     def update(Question questionInstance) {
+        println params
+        println questionInstance?.questionType
         if (questionInstance == null) {
             notFound()
             return

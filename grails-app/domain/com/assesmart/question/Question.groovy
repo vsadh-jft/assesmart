@@ -13,4 +13,7 @@ class Question {
 
     static hasMany = [answers: Answer]
 
+    String toString(){
+        return description
+    }
 }
