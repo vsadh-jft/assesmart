@@ -32,20 +32,44 @@ class QuestionController {
     @Transactional
     def save(Question questionInstance) {
         println params
+        String str = params.questionType
         println "save question........"
+        println str
         if (questionInstance == null) {
             notFound()
             return
         }
-        if(params.questionType==QuestionType.MULTIPLE_CHOICE){
-            def answers = params.list('answer')
+        println QuestionType.MULTIPLE_CHOICE
+        if(str.equals(QuestionType.MULTIPLE_CHOICE.toString())){
+            List answers = params.list('answer')
+            Integer correctAnswer = params.int('correctAnswer')
+            List<Answer> answersList = new LinkedList<Answer>();
+            for(String s:answers){
+                if(s==''){
+                    flash.message='Please enter all fields'
+                    render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
+                    return
+                }
+                Answer answer =new Answer();
+                answer.setAnswer(s)
+                answer.setCorrectAnswer(answers.get(correctAnswer).equals(s)?true:false)
+                answer.setQuestion(questionInstance)
+                answersList.add(answer)
+            }
+            questionInstance.setAnswers(answersList)
+        }else if(str.equals(QuestionType.MULTIPLE_SELECT.toString())){
+            List answers = params.list('answer')
             Integer correctAnswer = params.int('correctAnswer')
             List<Answer> answersList = new LinkedList<Answer>();
             for(String s:answers){
                 Answer answer =new Answer();
                 answer.setAnswer(s)
+                answer.setCorrectAnswer(answers.get(correctAnswer).equals(s)?true:false)
+                answer.setQuestion(questionInstance)
+                answersList.add(answer)
             }
         }
+
 
         if (questionInstance.hasErrors()) {
             respond questionInstance.errors, view: 'create'
@@ -57,10 +81,15 @@ class QuestionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
-                redirect questionInstance
+                redirect action: 'index'
             }
             '*' { respond questionInstance, [status: CREATED] }
         }
+    }
+
+    def addAnswer(){
+        println "here..."
+        render template: 'mutipleChoice' , model: [answerIndex:params.answerIndex]
     }
 
     def edit(Question questionInstance) {
