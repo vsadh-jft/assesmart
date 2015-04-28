@@ -56,8 +56,8 @@
 <script type="text/javascript">
 
     function addAnswer(questionType) {
-        console.debug("called...")
-        console.debug(document.getElementsByName("answer").length)
+        $('.removeLink').remove();
+        var links = document.getElementsByClassName('removeLink');
         var i = document.getElementsByName("answer").length;
         $.ajax({
             url: '${createLink(controller: 'question', action: 'addAnswer')}',
@@ -69,11 +69,19 @@
                 }else if(questionType=='MULTIPLE_SELECT'){
                     $('div[id="multipleSelect"]').append(html);
                 }
+
             }
         });
+
     }
 
     function removeOption(id){
+        var i = document.getElementsByName("answer").length;
+        i=i-2
+        var j = document.getElementsByClassName("fieldcontain").length;
+        j=j-2
+      /*  $('.fieldcontain:eq(' + j + '- 1)').append('<a href="#" class="removeLink" onclick="removeOption( ${"Create_" + i})" >Remove Option</a>');*/
+        $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ") >Remove Option</a>");
         console.debug(id)
         return (elem=document.getElementById(id)).parentNode.removeChild(elem);
     }

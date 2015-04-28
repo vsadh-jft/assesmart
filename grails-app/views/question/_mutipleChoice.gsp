@@ -29,7 +29,7 @@
                 <g:message code="answer.correctAnswer.label" default="Correct Answer" />
             </label>
             <g:radio class="rb"  name="correctAnswer" value="${Integer.valueOf(answerIndex) + 1}" />
-            <a href="#" onclick="removeOption( '${'Create_' + answerIndex}')" >Remove Option</a>
+            <a href="#" class="removeLink" onclick="removeOption( '${'Create_' + answerIndex}')" >Remove Option</a>
         </div>
     </div>
 
