@@ -9,6 +9,4 @@
 
         </label>
         <g:checkBox name="correctAnswer" value="${Integer.valueOf(answerIndex) + 1}" />
-
-
     </div>

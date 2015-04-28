@@ -1,6 +1,5 @@
 <%@ page import="com.assesmart.question.Question;com.assesmart.enumeration.QuestionType" %>
 
-${questionInstance.questionType.toString()}
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'answers', 'error')} ">
     <label for="answers">
         <g:message code="question.answers.label" default="Answers" />
@@ -72,6 +71,11 @@ ${questionInstance.questionType.toString()}
                 }
             }
         });
+    }
+
+    function removeOption(id){
+        console.debug(id)
+        return (elem=document.getElementById(id)).parentNode.removeChild(elem);
     }
 
 </script>
