@@ -59,20 +59,35 @@ class QuestionController {
                 answer.setQuestion(questionInstance)
                 answersList.add(answer)
             }
-            Answer.findAllByQuestion(questionInstance).each {it.delete()}
+            if(questionInstance?.id>0){
+                Answer.findAllByQuestion(questionInstance).each {it.delete()}
+            }
             questionInstance.setAnswers(answersList)
         }else if(str.equals(QuestionType.MULTIPLE_SELECT.toString())){
             List answers = params.list('answer')
             List correctAnswers = params.list('correctAnswer')
+            if(correctAnswers.size()<1){
+                flash.message='There must be atleast one correct answer'
+                render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
+                return
+            }
             List<Answer> answersList = new LinkedList<Answer>();
             int i =1;
             for(String s:answers){
+                if(s==''){
+                    flash.message='Please enter all fields'
+                    render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
+                    return
+                }
                 Answer answer =new Answer();
                 answer.setAnswer(s)
                 answer.setCorrectAnswer(correctAnswers.toArray().contains(i.toString())?true:false)
                 answer.setQuestion(questionInstance)
                 answersList.add(answer)
                 i++;
+            }
+            if(questionInstance?.id>0){
+                Answer.findAllByQuestion(questionInstance).each {it.delete()}
             }
             questionInstance.setAnswers(answersList)
         }

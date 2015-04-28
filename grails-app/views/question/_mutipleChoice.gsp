@@ -12,7 +12,7 @@
                     <g:message code="answer.correctAnswer.label" default="Correct Answer" />
 
                 </label>
-                <g:radio class="rb"  name="correctAnswer" value="${i + 1}" />
+                <g:radio class="rb"  name="correctAnswer" checked="${answerInstance?.correctAnswer}" value="${i + 1}" />
                 <g:if test="${count-1==i}">
                     <a href="#" class="removeLink" onclick="removeOption('${'Exist_' + i}',false)" >Remove Option</a>
                 </g:if>
