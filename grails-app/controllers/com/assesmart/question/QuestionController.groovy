@@ -63,14 +63,13 @@ class QuestionController {
             questionInstance.setAnswers(answersList)
         }else if(str.equals(QuestionType.MULTIPLE_SELECT.toString())){
             List answers = params.list('answer')
-            List<Integer> correctAnswers = params.list('correctAnswer')
-            correctAnswers.each {println it}
+            List correctAnswers = params.list('correctAnswer')
             List<Answer> answersList = new LinkedList<Answer>();
-            int i =0;
+            int i =1;
             for(String s:answers){
                 Answer answer =new Answer();
                 answer.setAnswer(s)
-                answer.setCorrectAnswer(correctAnswers.contains(correctAnswers.get(0))?true:false)
+                answer.setCorrectAnswer(correctAnswers.toArray().contains(i.toString())?true:false)
                 answer.setQuestion(questionInstance)
                 answersList.add(answer)
                 i++;

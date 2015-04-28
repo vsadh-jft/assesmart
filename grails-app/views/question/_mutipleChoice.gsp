@@ -6,7 +6,6 @@
             <div id="Exist_${i}" class="fieldcontain ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
                 <label for="answer">
                     <g:message code="answer.answer.label" default="Answer ${i + 1}" />
-
                 </label>
                 <g:textField name="answer" value="${answerInstance?.answer}"/>
                 <label for="correctAnswer">
