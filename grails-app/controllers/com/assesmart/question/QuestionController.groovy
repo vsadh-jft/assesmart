@@ -10,6 +10,7 @@ import grails.transaction.Transactional
 class QuestionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def questionService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -31,39 +32,36 @@ class QuestionController {
 
     @Transactional
     def save(Question questionInstance) {
-        println params
-        String str = params.questionType
-        println str
+        String questionType = params.questionType
+        String itemBank = params.itemBank.id
+        String description = params.description;
         if (questionInstance == null) {
             notFound()
             return
         }
-        if(str.equals(QuestionType.MULTIPLE_CHOICE.toString())){
+        if(questionType.equals(QuestionType.MULTIPLE_CHOICE.toString())){
             List answers = params.list('answer')
             Integer correctAnswer = params.int('correctAnswer')
-            if(correctAnswer==null){
-                flash.message='There must be atleast one correct answer'
-                render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
-                return
-            }
-            List<Answer> answersList = new LinkedList<Answer>();
             for(String s:answers){
                 if(s==''){
                     flash.message='Please enter all fields'
                     render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
                     return
                 }
-                Answer answer =new Answer();
-                answer.setAnswer(s)
-                answer.setCorrectAnswer(answers.get(correctAnswer-1).equals(s)?true:false)
-                answer.setQuestion(questionInstance)
-                answersList.add(answer)
             }
-            if(questionInstance?.id>0){
-                Answer.findAllByQuestion(questionInstance).each {it.delete()}
+            if(correctAnswer==null){
+                flash.message='There must be atleast one correct answer'
+                render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
+                return
             }
-            questionInstance.setAnswers(answersList)
-        }else if(str.equals(QuestionType.MULTIPLE_SELECT.toString())){
+            Integer id =  questionService.createUpdateMultipleChoiceQuestion(answers,correctAnswer,Integer.valueOf(itemBank),questionInstance?.id,description)
+            if(!(questionInstance?.id>0)){
+                flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'),id])
+            }else{
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Question'), id])
+            }
+            redirect action: 'index'
+        }else if(questionType.equals(QuestionType.MULTIPLE_SELECT.toString())){
             List answers = params.list('answer')
             List correctAnswers = params.list('correctAnswer')
             if(correctAnswers.size()<1){
@@ -71,41 +69,37 @@ class QuestionController {
                 render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
                 return
             }
-            List<Answer> answersList = new LinkedList<Answer>();
-            int i =1;
             for(String s:answers){
                 if(s==''){
                     flash.message='Please enter all fields'
                     render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
                     return
                 }
-                Answer answer =new Answer();
-                answer.setAnswer(s)
-                answer.setCorrectAnswer(correctAnswers.toArray().contains(i.toString())?true:false)
-                answer.setQuestion(questionInstance)
-                answersList.add(answer)
-                i++;
             }
-            if(questionInstance?.id>0){
-                Answer.findAllByQuestion(questionInstance).each {it.delete()}
+
+
+            Integer id =  questionService.createUpdateMultipleSelectQuestion(answers,correctAnswers,Integer.valueOf(itemBank),questionInstance?.id,description)
+            if(!(questionInstance?.id>0)){
+                flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'),id])
+            }else{
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Question'), id])
             }
-            questionInstance.setAnswers(answersList)
+            redirect action: 'index'
         }
 
-        if (questionInstance.hasErrors()) {
-            respond questionInstance.errors, view: 'create'
-            return
-        }
 
-        questionInstance.save flush: true
-
-        request.withFormat {
+/*        request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
+                if(!(questionInstance?.id>0)){
+                    flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
+                }else{
+                    flash.message = message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
+
+                }
                 redirect action: 'index'
             }
             '*' { respond questionInstance, [status: CREATED] }
-        }
+        }*/
     }
 
     def addAnswer(){
