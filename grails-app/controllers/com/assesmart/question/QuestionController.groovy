@@ -33,7 +33,6 @@ class QuestionController {
     def save(Question questionInstance) {
         println params
         String str = params.questionType
-        println "save question........"
         println str
         if (questionInstance == null) {
             notFound()
@@ -60,6 +59,7 @@ class QuestionController {
                 answer.setQuestion(questionInstance)
                 answersList.add(answer)
             }
+            Answer.findAllByQuestion(questionInstance).each {it.delete()}
             questionInstance.setAnswers(answersList)
         }else if(str.equals(QuestionType.MULTIPLE_SELECT.toString())){
             List answers = params.list('answer')
@@ -68,7 +68,6 @@ class QuestionController {
             List<Answer> answersList = new LinkedList<Answer>();
             int i =0;
             for(String s:answers){
-                println "inside for....."
                 Answer answer =new Answer();
                 answer.setAnswer(s)
                 answer.setCorrectAnswer(correctAnswers.contains(correctAnswers.get(0))?true:false)

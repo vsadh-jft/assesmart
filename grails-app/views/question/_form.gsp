@@ -75,14 +75,16 @@
 
     }
 
-    function removeOption(id){
+    function removeOption(id,isCreate){
         var i = document.getElementsByName("answer").length;
         i=i-2
         var j = document.getElementsByClassName("fieldcontain").length;
         j=j-2
-      /*  $('.fieldcontain:eq(' + j + '- 1)').append('<a href="#" class="removeLink" onclick="removeOption( ${"Create_" + i})" >Remove Option</a>');*/
-        $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ") >Remove Option</a>");
-        console.debug(id)
+        if(isCreate){
+            $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ") >Remove Option</a>");
+        }else{
+            $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Exist_' + i +  "'"  + ") >Remove Option</a>");
+        }
         return (elem=document.getElementById(id)).parentNode.removeChild(elem);
     }
 
