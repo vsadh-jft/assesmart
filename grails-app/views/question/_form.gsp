@@ -1,7 +1,5 @@
 <%@ page import="com.assesmart.question.Question;com.assesmart.enumeration.QuestionType" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'description', 'error')} required">
     <label for="description">
         <g:message code="question.description.label" default="Description" />
@@ -47,7 +45,12 @@
     <div id="singleResponse">
         <g:render template="singleResponse" model="[answerIndex:0]" />
     </div>
-    <input type="number" name="points" required="required" value="${questionInstance?.points}"/>
+    <div class="extraField">
+        <label for="points">
+            <g:message code="question.points.label"  default="Points" />
+        </label>
+        <input type="number" name="points" required="required" value="${questionInstance?.points}"/>
+    </div>
     <a href="#" onclick="addAnswer('${questionType}');">
         <g:message code="question.add.answer.label" default="Add Answer" />
     </a>
@@ -68,24 +71,23 @@
                     $('div[id="multichoice"]').append(html);
                 }else if(questionType=='MULTIPLE_SELECT'){
                     $('div[id="multipleSelect"]').append(html);
+                }else if(questionType=='SINGLE_RESPONSE'){
+                    $('div[id="singleResponse"]').append(html);
                 }
 
             }
         });
-
     }
 
     function removeOption(id,isCreate){
-console.debug(id)
         var i = document.getElementsByName("answer").length;
         i=i-2
         var j = document.getElementsByClassName("fieldcontain").length;
         j=j-2
-        console.debug(i)
         if(isCreate && i>=1){
-            $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",true" + ") >Remove Option</a>");
+            $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",true" + ") ><g:message code="question.answer.remove" /></a>");
         }else if(!isCreate && i>=1){
-            $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Exist_' + i +  "'"  + ",false" + ") >Remove Option</a>");
+            $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",false" + ") ><g:message code="question.answer.remove" /></a>");
         }
         if(i>=0){
             return (elem=document.getElementById(id)).parentNode.removeChild(elem);

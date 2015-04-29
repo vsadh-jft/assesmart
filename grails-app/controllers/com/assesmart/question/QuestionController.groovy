@@ -45,7 +45,7 @@ class QuestionController {
             Integer correctAnswer = params.int('correctAnswer')
             if(correctAnswer==null){
                 flash.message=message(code: 'question.invalid.correct.answer')
-                render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
+                render view: questionInstance?.id>0?'edit':'create', model: [questionInstance:questionInstance,questionType: params.questionType]
                 return
             }
             id =  questionService.createUpdateMultipleChoiceQuestion(answers,correctAnswer,Integer.valueOf(itemBank),questionInstance?.id,description)
@@ -54,7 +54,7 @@ class QuestionController {
             List correctAnswers = params.list('correctAnswer')
             if(correctAnswers.size()<1){
                 flash.message=message(code: 'question.invalid.correct.answer')
-                render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
+                render view: questionInstance?.id>0?'edit':'create', model: [questionInstance:questionInstance,questionType: params.questionType]
                 return
             }
             id =  questionService.createUpdateMultipleSelectQuestion(answers,correctAnswers,Integer.valueOf(itemBank),questionInstance?.id,description)
@@ -81,6 +81,8 @@ class QuestionController {
             render template: 'mutipleChoice' , model: [answerIndex:params.answerIndex]
         }else if(questionType==QuestionType.MULTIPLE_SELECT.toString()){
             render template: 'multipleSelect' , model: [answerIndex:params.answerIndex]
+        }else if(questionType==QuestionType.SINGLE_RESPONSE.toString()){
+            render template: 'singleResponse' , model: [answerIndex:params.answerIndex]
         }
     }
 

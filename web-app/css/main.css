@@ -239,6 +239,19 @@ fieldset,
 	margin-left: 27%;
 }
 
+.extraField {
+    margin-top: 1em;
+}
+
+
+.extraField label {
+    color: #666666;
+    text-align: right;
+    width: 25%;
+}
+
+
+
 label {
 	cursor: pointer;
 	display: inline-block;

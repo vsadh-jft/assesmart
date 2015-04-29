@@ -3,5 +3,5 @@
         <g:message code="question.height.label" default="Height" />
         <span class="required-indicator">*</span>
     </label>
-    <input type="number" required="required" name="points" value="${questionInstance?.points}">
+    <input type="number" required="required" name="height" value="${questionInstance?.height}">
 </div>
