@@ -1,21 +1,6 @@
 <%@ page import="com.assesmart.question.Question;com.assesmart.enumeration.QuestionType" %>
 
-<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'answers', 'error')} ">
-    <label for="answers">
-        <g:message code="question.answers.label" default="Answers" />
 
-    </label>
-
-    <ul class="one-to-many">
-        <g:each in="${questionInstance?.answers?}" var="a">
-            <li><g:link controller="answer" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li class="add">
-            <g:link controller="answer" action="create" params="['question.id': questionInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'answer.label', default: 'Answer')])}</g:link>
-        </li>
-    </ul>
-
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'description', 'error')} required">
     <label for="description">
@@ -23,7 +8,6 @@
         <span class="required-indicator">*</span>
     </label>
     <g:textField name="description" required="" value="${questionInstance?.description}"/>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'itemBank', 'error')} required">
@@ -42,16 +26,32 @@
     <div id="multichoice">
         <g:render template="mutipleChoice" model="[answerIndex:0]"/>
     </div>
+    <a href="#" onclick="addAnswer('${questionType}');">
+        <g:message code="question.add.answer.label" default="Add Answer" />
+    </a>
 </g:if>
 <g:elseif test="${questionType==QuestionType.MULTIPLE_SELECT.toString()}">
     <div id="multipleSelect">
         <g:render template="multipleSelect" model="[answerIndex:0]" />
     </div>
+    <a href="#" onclick="addAnswer('${questionType}');">
+        <g:message code="question.add.answer.label" default="Add Answer" />
+    </a>
 </g:elseif>
-
-<a href="#" onclick="addAnswer('${questionType}');">
-    Add Answer
-</a>
+<g:elseif test="${questionType==QuestionType.ESSAY.toString()}">
+    <div id="essay">
+        <g:render template="essay" model="[answerIndex:0]" />
+    </div>
+</g:elseif>
+<g:elseif test="${questionType==QuestionType.SINGLE_RESPONSE.toString()}">
+    <div id="singleResponse">
+        <g:render template="singleResponse" model="[answerIndex:0]" />
+    </div>
+    <input type="number" name="points" required="required" value="${questionInstance?.points}"/>
+    <a href="#" onclick="addAnswer('${questionType}');">
+        <g:message code="question.add.answer.label" default="Add Answer" />
+    </a>
+</g:elseif>
 
 <script type="text/javascript">
 
@@ -76,17 +76,20 @@
     }
 
     function removeOption(id,isCreate){
-        console.debug(isCreate)
+console.debug(id)
         var i = document.getElementsByName("answer").length;
         i=i-2
         var j = document.getElementsByClassName("fieldcontain").length;
         j=j-2
-        if(isCreate){
+        console.debug(i)
+        if(isCreate && i>=1){
             $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",true" + ") >Remove Option</a>");
-        }else{
+        }else if(!isCreate && i>=1){
             $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Exist_' + i +  "'"  + ",false" + ") >Remove Option</a>");
         }
-        return (elem=document.getElementById(id)).parentNode.removeChild(elem);
+        if(i>=0){
+            return (elem=document.getElementById(id)).parentNode.removeChild(elem);
+        }
     }
 
 </script>

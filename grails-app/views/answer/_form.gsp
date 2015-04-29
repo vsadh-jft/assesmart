@@ -5,19 +5,15 @@
 <div class="fieldcontain ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
 	<label for="answer">
 		<g:message code="answer.answer.label" default="Answer" />
-		
 	</label>
 	<g:textField name="answer" value="${answerInstance?.answer}"/>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: answerInstance, field: 'correctAnswer', 'error')} ">
 	<label for="correctAnswer">
 		<g:message code="answer.correctAnswer.label" default="Correct Answer" />
-		
 	</label>
 	<g:checkBox name="correctAnswer" value="${answerInstance?.correctAnswer}" />
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: answerInstance, field: 'question', 'error')} required">

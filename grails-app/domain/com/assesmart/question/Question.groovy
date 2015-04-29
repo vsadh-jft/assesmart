@@ -10,7 +10,13 @@ class Question {
     QuestionType questionType
     List answers
     ItemBank itemBank
+    Integer height
+    Integer points
 
+    static constraints = {
+        height nullable: true
+        points nullable: true
+    }
     static hasMany = [answers: Answer]
 
     String toString(){

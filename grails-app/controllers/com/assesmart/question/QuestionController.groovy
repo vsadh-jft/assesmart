@@ -35,6 +35,7 @@ class QuestionController {
         String questionType = params.questionType
         String itemBank = params.itemBank.id
         String description = params.description;
+        Integer id = null
         if (questionInstance == null) {
             notFound()
             return
@@ -42,72 +43,43 @@ class QuestionController {
         if(questionType.equals(QuestionType.MULTIPLE_CHOICE.toString())){
             List answers = params.list('answer')
             Integer correctAnswer = params.int('correctAnswer')
-            for(String s:answers){
-                if(s==''){
-                    flash.message='Please enter all fields'
-                    render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
-                    return
-                }
-            }
             if(correctAnswer==null){
-                flash.message='There must be atleast one correct answer'
+                flash.message=message(code: 'question.invalid.correct.answer')
                 render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
                 return
             }
-            Integer id =  questionService.createUpdateMultipleChoiceQuestion(answers,correctAnswer,Integer.valueOf(itemBank),questionInstance?.id,description)
-            if(!(questionInstance?.id>0)){
-                flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'),id])
-            }else{
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Question'), id])
-            }
-            redirect action: 'index'
+            id =  questionService.createUpdateMultipleChoiceQuestion(answers,correctAnswer,Integer.valueOf(itemBank),questionInstance?.id,description)
         }else if(questionType.equals(QuestionType.MULTIPLE_SELECT.toString())){
             List answers = params.list('answer')
             List correctAnswers = params.list('correctAnswer')
             if(correctAnswers.size()<1){
-                flash.message='There must be atleast one correct answer'
+                flash.message=message(code: 'question.invalid.correct.answer')
                 render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
                 return
             }
-            for(String s:answers){
-                if(s==''){
-                    flash.message='Please enter all fields'
-                    render view: 'create', model: [questionInstance:questionInstance,questionType: params.questionType]
-                    return
-                }
-            }
-
-
-            Integer id =  questionService.createUpdateMultipleSelectQuestion(answers,correctAnswers,Integer.valueOf(itemBank),questionInstance?.id,description)
-            if(!(questionInstance?.id>0)){
-                flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'),id])
-            }else{
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Question'), id])
-            }
-            redirect action: 'index'
+            id =  questionService.createUpdateMultipleSelectQuestion(answers,correctAnswers,Integer.valueOf(itemBank),questionInstance?.id,description)
+        }else if(questionType.equals(QuestionType.ESSAY.toString())){
+            Integer height = params.int('height');
+            id =  questionService.createUpdateEssayQuestion(Integer.valueOf(itemBank),questionInstance?.id,description,height)
+        }else if(questionType.equals(QuestionType.SINGLE_RESPONSE.toString())){
+            Integer points = params.int('points');
+            List answers = params.list('answer')
+            id =  questionService.createUpdateSingleResponseQuestion(answers,Integer.valueOf(itemBank),questionInstance?.id,description,points)
         }
-
-
-/*        request.withFormat {
-            form multipartForm {
-                if(!(questionInstance?.id>0)){
-                    flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
-                }else{
-                    flash.message = message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
-
-                }
-                redirect action: 'index'
-            }
-            '*' { respond questionInstance, [status: CREATED] }
-        }*/
+        if(!(questionInstance?.id>0) && id>0){
+            flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'),id])
+        }else if(questionInstance?.id>0){
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Question'), id])
+        }
+        redirect action: 'index'
     }
 
     def addAnswer(){
-        String str = params.questionType
+        String questionType = params.questionType
         println params
-        if(str==QuestionType.MULTIPLE_CHOICE.toString()){
+        if(questionType==QuestionType.MULTIPLE_CHOICE.toString()){
             render template: 'mutipleChoice' , model: [answerIndex:params.answerIndex]
-        }else if(str==QuestionType.MULTIPLE_SELECT.toString()){
+        }else if(questionType==QuestionType.MULTIPLE_SELECT.toString()){
             render template: 'multipleSelect' , model: [answerIndex:params.answerIndex]
         }
     }
