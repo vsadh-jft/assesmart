@@ -26,22 +26,20 @@
 				<g:if test="${itemBankInstance?.name}">
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="itemBank.name.label" default="Name" /></span>
-					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${itemBankInstance}" field="name"/></span>
-					
 				</li>
 				</g:if>
-			
-				<g:if test="${itemBankInstance?.questions}">
-				<li class="fieldcontain">
-					<span id="questions-label" class="property-label"><g:message code="itemBank.questions.label" default="Questions" /></span>
-					
-						<g:each in="${itemBankInstance.questions}" var="q">
-						<span class="property-value" aria-labelledby="questions-label"><g:link controller="question" action="show" id="${q.id}">${q?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
+
+                <g:if test="${itemBankInstance?.questions}">
+                    <li class="fieldcontain">
+                        <span id="questions-label" class="property-label"><g:message code="itemBank.questions.label" default="Questions" /></span>
+
+                        <g:each in="${itemBankInstance.questions}" var="q">
+                            <span class="property-value" aria-labelledby="questions-label"><g:link controller="question" action="show" id="${q.id}">${q?.encodeAsHTML()}</g:link></span>
+                        </g:each>
+
+                    </li>
+                </g:if>
 			
 			</ol>
 			<g:form url="[resource:itemBankInstance, action:'delete']" method="DELETE">
