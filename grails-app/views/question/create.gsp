@@ -30,9 +30,27 @@
 					<g:render template="form" model="[questionType:questionType]"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" onclick="return validate();" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
 			</g:form>
 		</div>
+    <script type="text/javascript">
+        function validate(){
+            var order;
+            var toExcludeItemIds = [];
+            $('.order').each(function() {
+                order = $(this).val();
+                toExcludeItemIds.push(order);
+
+            });
+            var len = toExcludeItemIds.length;
+            if(len> ($.unique(toExcludeItemIds).length)){
+                alert("Order should be unique")
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
 	</body>
 </html>

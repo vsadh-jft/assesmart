@@ -101,4 +101,42 @@ class QuestionService {
         return question.id
 
     }
+
+    public Integer createFillTheBlankQuestion(Integer itemBank,Long id,String description){
+        Question question = new Question();
+        if(id!=null && id>0){
+            question = Question.get(id)
+        }
+        question.setDescription(description)
+        question.setItemBank(ItemBank.get(itemBank))
+        question.setId(id)
+        question.setQuestionType(QuestionType.FILL_IN_THE_BLANKS)
+        question.save(flush: true, failOnError: true)
+        return question.id
+    }
+
+    public Integer createReorderQuestion(List answers,List orders,Integer itemBank,Long id,String description){
+        Question question = new Question();
+        if(id!=null && id>0){
+            question = Question.get(id)
+        }
+        question.setDescription(description)
+        question.setItemBank(ItemBank.get(itemBank))
+        question.setId(id)
+        question.setQuestionType(QuestionType.REORDER)
+        List<Answer> answersList = new LinkedList<Answer>();
+        for(int i=0;i<answers.size();i++){
+            Answer answer =new Answer();
+            answer.setAnswer(answers.get(i))
+            answer.setPrecedence(Integer.valueOf(orders.get(i)))
+            answer.setQuestion(question)
+            answersList.add(answer)
+        }
+        if(question?.id>0){
+            Answer.findAllByQuestion(question).each {it.delete()}
+        }
+        question.setAnswers(answersList)
+        question.save(flush: true, failOnError: true)
+        return question.id
+    }
 }

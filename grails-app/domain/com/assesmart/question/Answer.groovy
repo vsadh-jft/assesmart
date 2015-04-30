@@ -6,11 +6,13 @@ package com.assesmart.question
 class Answer {
     String answer
     Boolean correctAnswer
+    Integer precedence
     static belongsTo = [question: Question]
 
     static constraints = {
         answer nullable: true, blank: false
         correctAnswer nullable: true
+        precedence nullable: true
     }
 
     String toString(){

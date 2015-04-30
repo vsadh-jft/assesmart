@@ -55,6 +55,14 @@
         <g:message code="question.add.answer.label" default="Add Answer" />
     </a>
 </g:elseif>
+<g:elseif test="${questionType==QuestionType.REORDER.toString()}">
+    <div id="reorder">
+        <g:render template="reorder" model="[answerIndex:0]" />
+    </div>
+    <a href="#" onclick="addAnswer('${questionType}');">
+        <g:message code="question.add.answer.label" default="Add Answer" />
+    </a>
+</g:elseif>
 
 <script type="text/javascript">
 
@@ -73,6 +81,8 @@
                     $('div[id="multipleSelect"]').append(html);
                 }else if(questionType=='SINGLE_RESPONSE'){
                     $('div[id="singleResponse"]').append(html);
+                }else if(questionType=='REORDER'){
+                    $('div[id="reorder"]').append(html);
                 }
 
             }
