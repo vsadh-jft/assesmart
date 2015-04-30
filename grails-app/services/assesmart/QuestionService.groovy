@@ -154,7 +154,7 @@ class QuestionService {
             Answer answer =new Answer();
             answer.setAnswer(sources.get(i))
             answer.setDestinationId(Integer.valueOf(links.get(i)))
-            answer.setIndexNumber(i)
+            answer.setIndexNumber(i+1)
             answer.setQuestion(question)
             answersList.add(answer)
         }
