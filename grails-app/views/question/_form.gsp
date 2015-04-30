@@ -63,7 +63,14 @@
         <g:message code="question.add.answer.label" default="Add Answer" />
     </a>
 </g:elseif>
-
+<g:elseif test="${questionType==QuestionType.MATCHING.toString()}">
+    <div id="match">
+        <g:render template="match" model="[answerIndex:0,sources:sources,destinations:destinations]" />
+    </div>
+    <a href="#" onclick="addAnswer('${questionType}');">
+        <g:message code="question.add.answer.label" default="Add Answer" />
+    </a>
+</g:elseif>
 <script type="text/javascript">
 
     function addAnswer(questionType) {
@@ -83,6 +90,8 @@
                     $('div[id="singleResponse"]').append(html);
                 }else if(questionType=='REORDER'){
                     $('div[id="reorder"]').append(html);
+                    }else if(questionType=='MATCHING'){
+                    $('div[id="match"]').append(html);
                 }
 
             }

@@ -30,7 +30,7 @@
 			<g:form url="[resource:questionInstance, action:'save']" >
 				<g:hiddenField name="version" value="${questionInstance?.version}" />
 				<fieldset class="form">
-					<g:render template="form"/>
+					<g:render template="form" model="[sources:sources,destinations:destination]"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save" onclick="return validate();" action="save" value="${message(code: 'default.button.update.label', default: 'Update')}" />

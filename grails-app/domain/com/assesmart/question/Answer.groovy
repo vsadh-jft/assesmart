@@ -7,12 +7,16 @@ class Answer {
     String answer
     Boolean correctAnswer
     Integer precedence
+    Integer indexNumber
+    Integer destinationId
     static belongsTo = [question: Question]
 
     static constraints = {
         answer nullable: true, blank: false
         correctAnswer nullable: true
         precedence nullable: true
+        destinationId nullable: true
+        indexNumber nullable: true
     }
 
     String toString(){

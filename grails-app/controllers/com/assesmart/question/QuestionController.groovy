@@ -62,17 +62,22 @@ class QuestionController {
             Integer height = params.int('height');
             id =  questionService.createUpdateEssayQuestion(Integer.valueOf(itemBank),questionInstance?.id,description,height)
         }else if(questionType.equals(QuestionType.SINGLE_RESPONSE.toString())){
-            Integer points = params.int('points');
+            Integer points = params.int('points')
             List answers = params.list('answer')
             id =  questionService.createUpdateSingleResponseQuestion(answers,Integer.valueOf(itemBank),questionInstance?.id,description,points)
         }else if(questionType.equals(QuestionType.FILL_IN_THE_BLANKS.toString())){
-            Integer points = params.int('points');
+            Integer points = params.int('points')
             List answers = params.list('answer')
             id =  questionService.createFillTheBlankQuestion(Integer.valueOf(itemBank),questionInstance?.id,description)
         }else if(questionType.equals(QuestionType.REORDER.toString())){
             List orders = params.list('order')
             List answers = params.list('answer')
             id =  questionService.createReorderQuestion(answers,orders,Integer.valueOf(itemBank),questionInstance?.id,description)
+        }else if(questionType.equals(QuestionType.MATCHING.toString())){
+            List sources = params.list('answer')
+            List destinations = params.list('destination')
+            List links = params.list('link')
+            id =  questionService.createMatchingQuestion(sources,destinations,links,Integer.valueOf(itemBank),questionInstance?.id,description)
         }
         if(!(questionInstance?.id>0) && id>0){
             flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'),id])
@@ -93,11 +98,16 @@ class QuestionController {
             render template: 'singleResponse' , model: [answerIndex:params.answerIndex]
         }else if(questionType==QuestionType.REORDER.toString()){
             render template: 'reorder' , model: [answerIndex:params.answerIndex]
+        }else if(questionType==QuestionType.MATCHING.toString()){
+            render template: 'match' , model: [answerIndex:params.answerIndex]
         }
     }
 
     def edit(Question questionInstance) {
-        respond questionInstance
+        List<Answer> answers = questionInstance.answers;
+        List<Answer> sources = answers.findAll {it.destinationId!=null}
+        List<Answer> destination = answers.findAll {it.destinationId==null && it.indexNumber!=null}
+        [questionInstance:questionInstance,sources:sources,destination:destination]
     }
 
     @Transactional

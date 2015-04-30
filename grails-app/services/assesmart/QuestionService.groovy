@@ -139,4 +139,37 @@ class QuestionService {
         question.save(flush: true, failOnError: true)
         return question.id
     }
+
+    public Integer createMatchingQuestion(List sources,List destinations,List links,Integer itemBank,Long id,String description){
+        Question question = new Question();
+        if(id!=null && id>0){
+            question = Question.get(id)
+        }
+        question.setDescription(description)
+        question.setItemBank(ItemBank.get(itemBank))
+        question.setId(id)
+        question.setQuestionType(QuestionType.MATCHING)
+        List<Answer> answersList = new LinkedList<Answer>();
+        for(int i=0;i<sources.size();i++){
+            Answer answer =new Answer();
+            answer.setAnswer(sources.get(i))
+            answer.setDestinationId(Integer.valueOf(links.get(i)))
+            answer.setIndexNumber(i)
+            answer.setQuestion(question)
+            answersList.add(answer)
+        }
+        for(int i=0;i<destinations.size();i++){
+            Answer answer =new Answer();
+            answer.setAnswer(sources.get(i))
+            answer.setIndexNumber(i)
+            answer.setQuestion(question)
+            answersList.add(answer)
+        }
+        if(question?.id>0){
+            Answer.findAllByQuestion(question).each {it.delete()}
+        }
+        question.setAnswers(answersList)
+        question.save(flush: true, failOnError: true)
+        return question.id
+    }
 }
