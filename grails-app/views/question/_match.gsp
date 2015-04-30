@@ -8,7 +8,7 @@
                     <g:message code="question.answer.source" args="[Integer.valueOf(i)+1]" default="Source ${Integer.valueOf(i) + 1}" />
                 </label>
                 <g:textField name="answer" required="required" value="${sources?.get(i).answer}"/>
-                <input type="number" name="link" style="margin-right:5%;width: 4%" required="required" value="${sources?.get(i).destinationId}"/>
+                <input type="number" class="link" name="link" style="margin-right:5%;width: 4%" required="required" value="${sources?.get(i).destinationId}"/>
                     <g:message code="question.answer.destination" args="[Integer.valueOf(i)+1]" default="Answer ${Integer.valueOf(i) + 1}" />
                 <g:textField name="destination" required="required" value="${destinations?.get(i).answer}"/>${i+1}
                 <g:if test="${count-1==i}">
@@ -26,7 +26,7 @@
                 <g:message code="question.answer.source" args="[Integer.valueOf(answerIndex)+1]" default="Source ${Integer.valueOf(answerIndex) + 1}" />
             </label>
             <g:textField name="answer" required="required" value="${answerInstance?.answer}"/>
-            <input type="number" style="margin-right: 5%;width: 4%" name="link" required="required" />
+            <input type="number" class="link" style="margin-right: 5%;width: 4%" name="link" required="required" />
                 <g:message code="question.answer.destination" args="[Integer.valueOf(answerIndex)+1]" default="Answer ${Integer.valueOf(answerIndex) + 1}" />
             <g:textField  name="destination" required="required" value="${answerInstance?.answer}"/> ${Integer.valueOf(answerIndex)+1}
             <a href="#" class="removeLink" onclick="removeOption( '${'Create_' + answerIndex}',true)" ><g:message code="question.answer.remove" /></a>
