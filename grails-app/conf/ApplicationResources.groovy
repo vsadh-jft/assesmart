@@ -10,4 +10,10 @@ modules = {
         resource url: 'css/jquery.selectbox.css'
         resource url: 'css/stylesheet.css'
     }
+    dashboard{
+        resource url: 'css/dash.css'
+        resource url: 'css/jquery.selectbox.css'
+        resource url: 'js/dash.js'
+        resource url: 'js/jquery.selectbox-0.2.js'
+    }
 }
