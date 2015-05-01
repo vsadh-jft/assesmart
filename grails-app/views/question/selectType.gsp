@@ -8,24 +8,35 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="main">
+    <meta name="layout" content="dashboard">
     <title></title>
 </head>
 
 <body>
-<div>
+<div class="mid-sec">
+    <div class="bl">
+        <h2>Manage questions</h2>
+    </div>
+<div class="mainContent">
     <label for="questionType">
         <g:message code="question.questionType.label" default="Select a question Type" />
         <span class="required-indicator">*</span>
     </label>
     <g:form url="[resource:questionInstance, action:'create']" >
+        <script type="text/javascript">
+            $(function () {
+                $("#questionType").selectbox();
+            });
+        </script>
         <fieldset class="form">
-            <g:select name="questionType" from="${com.assesmart.enumeration.QuestionType?.values()}" keys="${com.assesmart.enumeration.QuestionType.values()*.name()}" required=""  />
+            <g:select id="questionType" name="questionType" from="${com.assesmart.enumeration.QuestionType?.values()}" keys="${com.assesmart.enumeration.QuestionType.values()*.name()}" required=""  />
         </fieldset>
-        <fieldset class="buttons">
+        <div class="proceed-butn">
             <g:submitButton name="create" class="create" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-        </fieldset>
+        </div>
     </g:form>
+    </div>
+    </div>
 </div>
 </body>
 </html>

@@ -106,7 +106,10 @@ a:link, a:visited {text-decoration:none;}
 #dash img {
     width: 100%;
 }
-	
+.mainContent{
+    margin-top: 5%;
+    margin-left: 5%;
+}
 
 .select1 {
     float: left;

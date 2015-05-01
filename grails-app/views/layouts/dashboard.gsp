@@ -45,15 +45,17 @@
             </div>
             <div class="clear"></div>
             <div class="drop" id="dropp" style=" display:block;">
-                <h2 class="create-icon"><a href="#">Create Question</a></h2>
+                <h2 class="create-icon"><g:link class="create" controller="question" action="selectType"><g:message code="create.question.label"/> </g:link></h2>
             </div>
             <div class="in" id="showmanage"> <a><img src="../images/bank.png" alt="" /></a>
                 <h2>Item Banks <img src="../images/d-but.png" alt="" /></h2>
             </div>
             <div class="clear"></div>
             <div class="drop"  id="hidemanage" style="display:none;">
-                <h2 class="create-icon"><a href="#">Create Item Bank</a></h2>
-                <h2 class="show-icon"><a href="#">Show Item Banks</a></h2>
+                <h2 class="create-icon"><g:link class="create" controller="itemBank" action="create"><g:message code="itemBank.create.label"/> </g:link></h2>
+
+                <h2 class="create-icon"><g:link class="create" controller="itemBank" action="index"><g:message code="itemBank.list.label"/> </g:link></h2>
+
             </div>
             <div class="clear"></div>
             <div class="in" id="report"> <a><img src="../images/rep.png" alt="" /></a>
@@ -80,37 +82,16 @@
                 <div class="top-head">
                     <h2>Assesmart<span> - Dashboard</span></h2>
                 </div>
-                <div class="mid-sec">
-                    <div class="bl">
-                        <h2>Manage questions</h2>
-                    </div>
-                    <div class="select1">
-                        <select name="questions" id="questions" tabindex="1">
-                            <option value="">-- Select Question --</option>
-                            <option value="1">Create Question</option>
-
-                        </select>
-                        <script type="text/javascript">
-                            $(function () {
-                                $("#questions").selectbox();
-                            });
-                        </script>
-                    </div>
-                    <div class="proceed-butn">
-                        <a href="#">PROCEED</a>
-                    </div>
+                <div class="mainBody">
+                    <g:layoutBody/>
                 </div>
+
             </div>
-            <!-- content -->
-
-        </div>
-
-        <!--<right-panel>-->
-
+    </div>
     </div>
 </div>
 
-<g:layoutBody/>
+
 <div class="footer" role="contentinfo"></div>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 <script type="text/javascript" >
