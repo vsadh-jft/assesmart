@@ -18,6 +18,7 @@ class QuestionController {
     }
 
     def show(Question questionInstance) {
+        println params
         respond questionInstance
     }
 
@@ -32,6 +33,9 @@ class QuestionController {
 
     @Transactional
     def save(Question questionInstance) {
+        println params
+        println questionInstance.description
+        println questionInstance.id
         String questionType = params.questionType
         String itemBank = params.itemBank.id
         String description = params.description;
