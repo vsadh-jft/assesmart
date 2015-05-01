@@ -52,9 +52,8 @@
                                     <input type='password' class='text_' name='j_password' id='password'/>
                             </div>
                             <div class="popup_form_field squaredFour">
-                                    <input type='checkbox' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
+                                <input type='checkbox' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
                                 <label for="remember_me"></label>
-
                             </div>
                             <div class="check-text"><g:message code="springSecurity.login.remember.me.label"/></div>
                             <div class="popup_form_field remember_field"> <a class="forgot_password" href="/">Forgot password?</a>
@@ -66,7 +65,7 @@
                         </form>
                     </div>
                     <div class="form_right">
-                        <div class="login_socials_title">You can login using your social profile</div>
+                        <div class="login_socials_title"><g:message code="login.social.profile"/></div>
                         <ul class="social-pop">
                             <li class="fb"><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li class="twt"><a href="#"><i class="fa fa-twitter"></i></a></li>
