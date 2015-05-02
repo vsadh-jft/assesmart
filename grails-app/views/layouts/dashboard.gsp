@@ -70,7 +70,7 @@
             </div>
             <div class="clear"></div>
             <div class="in" onclick="window.location = $(this).find('h2 > a').attr('href');"> <a><img src="${resource(dir: 'images', file: 'out.png')}" alt="" /></a>
-                <h2><a href="#">Logout</a></h2>
+                <h2><g:link controller="logout" action="index"><g:message code="springSecurity.logout.label"/></g:link></h2>
             </div>
             <div class="clear"></div>
         </div>
