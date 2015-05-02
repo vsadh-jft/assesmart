@@ -125,6 +125,7 @@ log4j = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.assesmart.user.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.assesmart.user.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.assesmart.user.Role'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/dashboard/index'
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],

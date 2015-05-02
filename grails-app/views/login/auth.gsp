@@ -41,6 +41,9 @@
             <div class="popup_wrap popup_login bg_tint_light animated fast bounceIn" id="popup_login"> <a class="popup_close" href="#"><i class="fa fa-times"></i></a>
                 <div class="form_wrap">
                     <div class="form_left">
+                        <g:if test='${flash.message}'>
+                            <div class='login_message'>${flash.message}</div>
+                        </g:if>
                         <form class="popup_form login_form" id='loginForm' name="login_form" method="POST" action='${postUrl}'>
                             <input type="hidden" value="" name="redirect_to">
                             <div class="popup_form_field login_field">
