@@ -19,6 +19,18 @@ class ItemBankController {
         respond itemBankInstance
     }
 
+    def showByItemBank(){
+
+        params.max = Math.min(params.max ?: 10, 100)
+        println params
+        if(params.id){
+            def questionInstanceList = Question.findAllByItemBank(ItemBank.get(params.id))
+            println "size"
+            println questionInstanceList.size()
+          render view:'showByItemBank' ,model:[questionInstanceList:questionInstanceList,questionInstanceCount: questionInstanceList.size()]
+        }
+    }
+
     def create() {
         respond new ItemBank(params)
     }

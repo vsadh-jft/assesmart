@@ -1,4 +1,3 @@
-
 <%@ page import="com.assesmart.question.Question" %>
 <!DOCTYPE html>
 <html>

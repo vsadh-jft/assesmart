@@ -21,7 +21,7 @@
 <div class="wrap">
     <div class="wrap-sub">
         <div class="top-nav">
-            <div class="logo1"> <a href="#"><img src="../images/logo.png" alt="" /></a> </div>
+            <div class="logo1"> <a href="#"><img src="${resource(dir: 'images', file: 'logo.png')}" alt="" /></a> </div>
             <div class="menu">
                 <ul id="yw2">
                     <li><a href="#">Home</a></li>
@@ -32,23 +32,23 @@
         <div class="clear"></div>
         <div class="left-panel">
             <div class="sjain">
-                <div class="avatar"> <img src="../images/avatar1.png" alt=""> </div>
+                <div class="avatar"> <img src="${resource(dir: 'images', file: 'avatar1.png')}" alt=""> </div>
                 <h2>My Profile</h2>
             </div>
             <div class="clear"></div>
-            <div id="dash" class="in"> <a> <img src="../images/dash.png" alt="" /> </a>
+            <div id="dash" class="in"> <a> <img src="${resource(dir: 'images', file: 'dash.png')}" alt="" /> </a>
                 <h2>Dashboard</h2>
             </div>
             <div class="clear"></div>
-            <div class="in" id="ind"> <a> <img src="../images/questn.png" alt="" /> </a>
-                <h2>Manage Questions <img src="../images/d-but.png" alt="" /> </h2>
+            <div class="in" id="ind"> <a> <img src="${resource(dir: 'images', file: 'questn.png')}" alt="" /> </a>
+                <h2>Manage Questions <img src="${resource(dir: 'images', file: 'd-but.png')}" alt="" /> </h2>
             </div>
             <div class="clear"></div>
             <div class="drop" id="dropp" style=" display:block;">
                 <h2 class="create-icon"><g:link class="create" controller="question" action="selectType"><g:message code="create.question.label"/> </g:link></h2>
             </div>
-            <div class="in" id="showmanage"> <a><img src="../images/bank.png" alt="" /></a>
-                <h2>Item Banks <img src="../images/d-but.png" alt="" /></h2>
+            <div class="in" id="showmanage"> <a><img src="${resource(dir: 'images', file: 'bank.png')}" alt="" /></a>
+                <h2>Item Banks <img src="${resource(dir: 'images', file: 'd-but.png')}" alt="" /></h2>
             </div>
             <div class="clear"></div>
             <div class="drop"  id="hidemanage" style="display:none;">
@@ -58,8 +58,8 @@
 
             </div>
             <div class="clear"></div>
-            <div class="in" id="report"> <a><img src="../images/rep.png" alt="" /></a>
-                <h2>Reports<img src="../images/d-but.png" alt="" /></h2>
+            <div class="in" id="report"> <a><img src="${resource(dir: 'images', file: 'rep.png')}" alt="" /></a>
+                <h2>Reports<img src="${resource(dir: 'images', file: 'd-but.png')}" alt="" /></h2>
             </div>
             <div class="clear"></div>
             <div class="drop"  id="hidereport" style="display:none;">
@@ -69,7 +69,7 @@
                 <h2><a href="#">Report4</a></h2>
             </div>
             <div class="clear"></div>
-            <div class="in" onclick="window.location = $(this).find('h2 > a').attr('href');"> <a><img src="../images/out.png" alt="" /></a>
+            <div class="in" onclick="window.location = $(this).find('h2 > a').attr('href');"> <a><img src="${resource(dir: 'images', file: 'out.png')}" alt="" /></a>
                 <h2><a href="#">Logout</a></h2>
             </div>
             <div class="clear"></div>
