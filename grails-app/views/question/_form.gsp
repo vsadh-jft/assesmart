@@ -1,20 +1,22 @@
 <%@ page import="com.assesmart.question.Question;com.assesmart.enumeration.QuestionType" %>
-
-<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'description', 'error')} required">
-    <label for="description">
-        <g:message code="question.description.label" default="Description" />
-        <span class="required-indicator">*</span>
-    </label>
-    <g:textField name="description" required="" value="${questionInstance?.description}"/>
+<div class="multi-form">
+<div class="desc">
+    <h3>Description :</h3>
+    <g:textField name="description" class="text1" required="" value="${questionInstance?.description}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'itemBank', 'error')} required">
-    <label for="itemBank">
-        <g:message code="question.itemBank.label" default="Item Bank" />
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="itemBank" name="itemBank.id" from="${com.assesmart.question.ItemBank.list()}" optionKey="id" required="" value="${questionInstance?.itemBank?.id}" class="many-to-one"/>
-</div>
+    <div class="itm-bnk">
+        <h3>Item Bank :</h3>
+        <div class="select2">
+            <g:select id="itemBank" class="select2" name="itemBank.id" from="${com.assesmart.question.ItemBank.list()}" optionKey="id" required="" value="${questionInstance?.itemBank?.id}" />
+            <script type="text/javascript">
+                $(function () {
+                    $("#itemBank").selectbox();
+                });
+            </script>
+        </div>
+    </div>
+
 
 <g:hiddenField name="questionType" value="${questionType!=null?questionType:questionInstance.questionType}" />
 <g:if test="${questionInstance?.id>0}">
@@ -71,6 +73,7 @@
         <g:message code="question.add.answer.label" default="Add Answer" />
     </a>
 </g:elseif>
+</div>
 <script type="text/javascript">
 
     function addAnswer(questionType) {
@@ -101,12 +104,14 @@
     function removeOption(id,isCreate){
         var i = document.getElementsByName("answer").length;
         i=i-2
-        var j = document.getElementsByClassName("fieldcontain").length;
+        var j = document.getElementsByClassName("ans").length;
         j=j-2
-        if(isCreate && i>=1){
-            $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",true" + ") ><g:message code="question.answer.remove" /></a>");
+        console.debug(j)
+        console.debug(i)
+        if(isCreate && i>0){
+            $(".ans:eq(" + j + ")").append("<div class=remove-box> <a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",true" + ")><img class=remove-img src=../images/Remove-icon.png ><span><g:message code="question.answer.remove" /></span></a> </div>");
         }else if(!isCreate && i>=1){
-            $(".fieldcontain:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",false" + ") ><g:message code="question.answer.remove" /></a>");
+            $(".ans:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",false" + ") ><g:message code="question.answer.remove" /></a>");
         }
         if(i>=0){
             return (elem=document.getElementById(id)).parentNode.removeChild(elem);

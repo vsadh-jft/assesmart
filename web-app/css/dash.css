@@ -99,17 +99,14 @@ a:link, a:visited {text-decoration:none;}
 .top-head h2 span { color:#4d4d4d;}
 .top-head a { float:right; padding:20px 20px 0 0; }
 
-.mid-sec { background:#ffffff; width:97%; border:#e7e7e7 1px solid; height:391px;  float:left; margin:10px 0 0 20px;padding-bottom: 19px; }
+.mid-sec { background:#ffffff; width:97%; border:#e7e7e7 1px solid; height:auto;  float:left; margin:10px 0 0 20px;padding-bottom: 19px; }
 .bl { background:#1a1c20; background-position:center; width:100%; height:40px; float:left;}
 .bl h2 { font-family:'Open Sans'; font-size:14px; color:#ffffff; line-height:40px; padding-left:20px; float:left; }
 
 #dash img {
     width: 100%;
 }
-.mainContent{
-    margin-top: 5%;
-    margin-left: 5%;
-}
+	
 
 .select1 {
     float: left;
@@ -122,4 +119,141 @@ a:link, a:visited {text-decoration:none;}
 }
 .proceed-butn { float:left; margin:3% 0 0 20px; width:100%;}
 .proceed-butn a { font-weight:bold; font-size:12px; color:#ffffff; background:#21bc91; padding:6px 16px; margin:0; transition:all ease 0.5s;}
-.proceed-butn a:hover {background:#272930; transition:all ease 0.5s; }
+.proceed-butn a:hover {background:#272930; transition:all ease 0.5s; cursor:pointer; }
+
+/*------------------------------------Multiple Choice---------------------------------------------*/
+
+.multi-form { float:left; margin:0 0 0 2%; width:98%;}
+.desc { float:left; margin:2% 0 0; width:100%;}
+.desc h3 {font-family:'Open Sans'; font-size:16px; color:#4d4d4d; margin:1% 0 0; float:left; }
+
+.text1 { border: 1px solid #4d4d4d; border-radius: 2px;  float: left;  margin:0 0 0 2%; padding:8px 0 8px 8px;  width: 56%;}
+.text1:focus {  border-color: #21bc91; box-shadow: 0 0 8px #21bc91; outline: 0 none;}
+
+.itm-bnk { float:left; margin:2% 0 0; width:100%;}
+.itm-bnk h3 {font-family:'Open Sans'; font-size:16px; color:#4d4d4d; margin:1% 0 0; float:left; }
+.select2 {float: left;  margin:0 0 0 2.8%;  width: auto;}	
+
+.ans { float:left; margin:2% 0 0; width:100%;}
+.ans h3 {font-family:'Open Sans'; font-size:16px; color:#4d4d4d; margin:1% 0 0; float:left; }
+.ans-text { border: 1px solid #4d4d4d; border-radius: 2px;  float: left;  margin:0 0 0 3.7%; padding:8px 0 8px 8px;  width: 56%;}
+.ans-text:focus {  border-color: #21bc91; box-shadow: 0 0 8px #21bc91; outline: 0 none;}
+
+
+input[type=checkbox]:not(old),
+input[type=radio   ]:not(old){
+  width     : 2em;
+  margin    : 0;
+  padding   : 0;
+  font-size : 1em;
+  opacity   : 0;
+}
+
+input[type=checkbox]:not(old) + label,
+input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  line-height  : 1.5em;
+ margin-left  : -2em;
+  font-family:'Open Sans'; font-size:13px; color:#4d4d4d;
+}
+input[type=checkbox]:not(old) + label > span,
+input[type=radio   ]:not(old) + label > span{
+  display          : inline-block;
+  width            : 0.875em;
+  height           : 0.875em;
+  margin           : 0.25em 0.5em 0.25em 0.25em;
+  border           : 0.0625em solid rgb(192,192,192);
+  border-radius    : 0.25em;
+  background       : rgb(224,224,224);
+  background-image :    -moz-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image :     -ms-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image :      -o-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image : -webkit-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image :         linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  vertical-align   : bottom;
+}
+input[type=checkbox]:not(old):checked + label > span,
+input[type=radio   ]:not(old):checked + label > span{
+  background-image :    -moz-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image :     -ms-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image :      -o-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image : -webkit-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image :         linear-gradient(rgb(224,224,224),rgb(240,240,240));
+}
+
+input[type=checkbox]:not(old):checked + label > span:before{
+  content     : '✓';
+  display     : block;
+  width       : 1em;
+  color       : rgb(33,188,145);
+  font-size   : 0.875em;
+  line-height : 1em;
+  text-align  : center;
+  text-shadow : 0 0 0.0714em rgb(115,153,77);
+  font-weight : bold;
+}
+
+
+input[type=radio]:not(old):checked +  label > span > span{
+  display          : block;
+  width            : 0.5em;
+  height           : 0.5em;
+  margin           : 0.125em;
+  border           : 0.0625em solid rgb(115,153,77);
+  border-radius    : 0.125em;
+  background       : rgb(33,188,145);
+  background-image :    -moz-linear-gradient(rgb(33,188,145),rgb(33,188,145));
+  background-image :     -ms-linear-gradient(rgb(33,188,145),rgb(33,188,145));
+  background-image :      -o-linear-gradient(rgb(33,188,145),rgb(33,188,1452));
+  background-image : -webkit-linear-gradient(rgb(33,188,145),rgb(33,188,145));
+  background-image :         linear-gradient(rgb(33,188,145),rgb(33,188,145));
+}
+
+.radio-box { float:left; margin:0.5% 0 0 2%;}
+
+
+.remove-box { float:left; margin:6px 0 0 2%; width:auto;}
+.remove-box img { width:18px; margin:0; float:left;}
+.remove-img { width:18px; margin:0; float:left;}
+.remove-box span { float:left; margin:2px 0 0 4px; width:auto; font-family:'Open Sans'; font-size:13px; color:#4d4d4d;}
+
+.add-ans { float:left; margin:3% 0 0; width:100%; }
+.add-ans img { float:left; width:18px; margin:0;}
+.add-ans span {float:left; margin:2px 0 0 4px; width:auto; font-family:'Open Sans'; font-size:13px; color:#4d4d4d; background:url(../images/add.png) no-repeat left center; background-size:18px; padding:2px 0 2px 24px;transition:all ease 0.5s; }
+.add-ans > a:hover span{ float:left; margin:2px 0 0 4px; width:auto; font-family:'Open Sans'; font-size:13px; color:#4d4d4d; background:url(../images/add2.png) no-repeat left center; background-size:18px; padding:2px 0 2px 24px;transition:all ease 0.5s; }
+
+.submit {font-family:'Open Sans';font-weight:bold; font-size:12px; color:#ffffff; background:#21bc91; padding:6px 16px; margin:3% 0; transition:all ease 0.5s; border:none;}
+.submit:hover {background:#272930; transition:all ease 0.5s; cursor:pointer; }
+
+/*----------------------------------single-response----------------------------------------*/
+
+.points { float:left; margin:3% 0 1%; width:100%;}
+.points h3 {font-family:'Open Sans'; font-size:14px; color:#4d4d4d; margin:1% 0 0; float:left; }
+.quant { float:left; margin:4px 0 0 5.2%; border:1px solid #4d4d4d; border-radius:2px; padding:2px; width:40px;}
+.quant:focus {  border-color: #21bc91; box-shadow: 0 0 4px #21bc91; outline: 0 none;}
+
+/*----------------------------------reorder----------------------------------------*/
+
+.order-box { float:left; margin:2px 0 0 3%; width:10%;}
+.order-box h3 {font-family:'Open Sans'; font-size:14px; color:#4d4d4d; margin:8% 0 0; float:left; }
+.order { float:left; margin:4px 0 0 5.2%; border:1px solid #4d4d4d; border-radius:2px; padding:2px; width:40px;}
+.order:focus {  border-color: #21bc91; box-shadow: 0 0 4px #21bc91; outline: 0 none;}
+
+/*----------------------------------reorder----------------------------------------*/
+
+.match { float:left; margin:3% 0 0; width:100%;}
+.match h3 {font-family:'Open Sans'; font-size:14px; color:#4d4d4d; margin:1% 0 0; float:left; text-align:center; width:38%; font-weight:bold;}
+.match h4 {font-family:'Open Sans'; font-size:14px; color:#4d4d4d; margin:1% 0 0; float:right; text-align:center; width:56%; font-weight:bold;}
+
+.match-text { border: 1px solid #4d4d4d; border-radius: 2px;  float: left;  margin:0; padding:8px 0 8px 8px;  width:65%;}
+.match-text:focus {  border-color: #21bc91; box-shadow: 0 0 8px #21bc91; outline: 0 none;}
+.src-quant { float:left; margin:0 0 0 20px; border:1px solid #4d4d4d; border-radius:2px; padding:7px 4px 9px; width:40px;}
+.src-quant:focus {  border-color: #21bc91; box-shadow: 0 0 4px #21bc91; outline: 0 none;}
+.block1 { float:left; margin:2% 0 0; width:100%;} 
+.source-block { float:left; margin:0; width:50%;} 
+.target-block { float:left; margin:0; width:50%;} 
+
+/*----------------------------------essay----------------------------------------*/
+
+.length { float:left; margin:4px 0 0 4.8%; border:1px solid #4d4d4d; border-radius:2px; padding:2px; width:40px;}
+.length:focus {  border-color: #21bc91; box-shadow: 0 0 4px #21bc91; outline: 0 none;}
