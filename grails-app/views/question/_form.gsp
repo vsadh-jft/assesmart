@@ -108,7 +108,7 @@
         j=j-2
         console.debug(j)
         console.debug(i)
-        if(isCreate && i>0){
+        if(isCreate && i>=1){
             $(".ans:eq(" + j + ")").append("<div class=remove-box> <a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",true" + ")><img class=remove-img src=../images/Remove-icon.png ><span><g:message code="question.answer.remove" /></span></a> </div>");
         }else if(!isCreate && i>=1){
             $(".ans:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",false" + ") ><g:message code="question.answer.remove" /></a>");
