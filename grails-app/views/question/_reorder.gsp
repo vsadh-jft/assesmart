@@ -6,8 +6,10 @@
             <div id="Create_${i}" class="ans ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
                 <h3><g:message code="question.answer.label" args="[Integer.valueOf(i) +1]" /> </h3>
                 <g:textField name="answer" class="ans-text" required="required" value="${answerInstance?.answer}"/>
-                <g:message code="question.answer.order.label" default="Order" />
-                <input type="number" class="order" required="required" name="order" style="width: 10%" value="${answerInstance?.precedence}"   />
+                <div class="order-box">
+                    <h3><g:message code="question.answer.order.label" default="Order" /></h3>
+                    <input type="number" value="${answerInstance?.precedence}" required="required" name="order" min="1" max="" class="order">
+                </div>
                 <g:if test="${count-1==i}">
                     <div class="remove-box">
                         <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + i}',false)"><img src="${resource(dir: 'images', file: 'Remove-icon.png')}" alt=""><span><g:message code="question.answer.remove" /></span></a>
@@ -25,7 +27,7 @@
             <g:textField name="answer" class="ans-text" required="required" value="${answerInstance?.answer}"/>
             <div class="order-box">
                 <h3><g:message code="question.answer.order.label" default="Order" /></h3>
-                <input type="number" name="order" min="1" max="" class="order">
+                <input type="number" value="${answerInstance?.precedence}" required="required" name="order" min="1" max="" class="order">
             </div>
             <div class="remove-box">
                 <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + answerIndex}',true)"><img src="${resource(dir: 'images', file: 'Remove-icon.png')}" alt=""><span><g:message code="question.answer.remove" /></span></a>
