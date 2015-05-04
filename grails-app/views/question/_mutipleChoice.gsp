@@ -4,7 +4,7 @@
     <g:each in="${questionInstance.answers}" var="answerInstance">
         <div name="parent">
             <div id="Create_${i}" class="ans ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
-                <h3>Answer ${Integer.valueOf(i)+1} :</h3>
+                <h3><g:message code="question.answer.label" args="[Integer.valueOf(i) +1]" /> </h3>
                 <g:textField name="answer" class="ans-text" required="required" value="${answerInstance?.answer}"/>
                 <div class="radio-box">
                     <input class="radio1" name="correctAnswer" type="radio" name="radio" value="${i + 1}" ${answerInstance?.correctAnswer==true?" checked":""} ><label for="radio1"><span><span></span></span><g:message code="question.answer.correct.label" /></label>
@@ -22,7 +22,7 @@
 <g:else>
     <div name="parent">
         <div id="Create_${answerIndex}" class="ans ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
-            <h3>Answer ${Integer.valueOf(answerIndex)+1} :</h3>
+            <h3><g:message code="question.answer.label" args="[Integer.valueOf(answerIndex) +1]" /> </h3>
             <g:textField name="answer" class="ans-text" required="required" value="${answerInstance?.answer}"/>
             <div class="radio-box">
                 <input class="radio1" name="correctAnswer" type="radio" name="radio" value="${Integer.valueOf(answerIndex) + 1}" ><label for="radio1"><span><span></span></span><g:message code="question.answer.correct.label" /></label>
@@ -32,5 +32,4 @@
             </div>
         </div>
     </div>
-
 </g:else>

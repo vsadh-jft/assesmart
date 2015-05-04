@@ -1,7 +1,7 @@
 <%@ page import="com.assesmart.question.Question;com.assesmart.enumeration.QuestionType" %>
 <div class="multi-form">
 <div class="desc">
-    <h3>Description :</h3>
+    <h3><g:message code="question.description.label"/> </h3>
     <g:textField name="description" class="text1" required="" value="${questionInstance?.description}"/>
 </div>
 
