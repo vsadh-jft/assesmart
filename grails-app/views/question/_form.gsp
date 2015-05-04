@@ -35,9 +35,9 @@
     <div id="multipleSelect">
         <g:render template="multipleSelect" model="[answerIndex:0]" />
     </div>
-    <a href="#" onclick="addAnswer('${questionType}');">
-        <g:message code="question.add.answer.label" default="Add Answer" />
-    </a>
+    <div class="add-ans">
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
+    </div>
 </g:elseif>
 <g:elseif test="${questionType==QuestionType.ESSAY.toString()}">
     <div id="essay">
