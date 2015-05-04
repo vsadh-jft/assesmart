@@ -26,9 +26,10 @@
     <div id="multichoice">
         <g:render template="mutipleChoice" model="[answerIndex:0]"/>
     </div>
-    <a href="#" onclick="addAnswer('${questionType}');">
-        <g:message code="question.add.answer.label" default="Add Answer" />
-    </a>
+    <div class="add-ans">
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
+    </div>
+
 </g:if>
 <g:elseif test="${questionType==QuestionType.MULTIPLE_SELECT.toString()}">
     <div id="multipleSelect">
@@ -77,7 +78,7 @@
 <script type="text/javascript">
 
     function addAnswer(questionType) {
-        $('.removeLink').remove();
+        $('.remove-box').remove();
         var links = document.getElementsByClassName('removeLink');
         var i = document.getElementsByName("answer").length;
         $.ajax({
@@ -111,7 +112,7 @@
         if(isCreate && i>=1){
             $(".ans:eq(" + j + ")").append("<div class=remove-box> <a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",true" + ")><img class=remove-img src=../images/Remove-icon.png ><span><g:message code="question.answer.remove" /></span></a> </div>");
         }else if(!isCreate && i>=1){
-            $(".ans:eq(" + j + ")").append("<a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",false" + ") ><g:message code="question.answer.remove" /></a>");
+            $(".ans:eq(" + j + ")").append("<div class=remove-box> <a href=# class=removeLink onclick=removeOption(" + "'" + 'Create_' + i +  "'"  + ",false" + ")><img class=remove-img src=../images/Remove-icon.png ><span><g:message code="question.answer.remove" /></span></a> </div>");
         }
         if(i>=0){
             return (elem=document.getElementById(id)).parentNode.removeChild(elem);
