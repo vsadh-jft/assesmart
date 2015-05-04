@@ -7,16 +7,15 @@
                 <h3>Answer ${Integer.valueOf(i)+1} :</h3>
                 <g:textField name="answer" class="ans-text" required="required" value="${answerInstance?.answer}"/>
                 <div class="radio-box">
-                    <input class="radio1" name="correctAnswer" type="radio" name="radio" value="${i + 1}" checked="${answerInstance?.correctAnswer}"><label for="radio1"><span><span></span></span>Correct Answer</label>
+                    <input class="radio1" name="correctAnswer" type="radio" name="radio" value="${i + 1}" ${answerInstance?.correctAnswer==true?" checked":""} ><label for="radio1"><span><span></span></span>Correct Answer</label>
                 </div>
                 <g:if test="${count-1==i}">
                     <div class="remove-box">
-                        <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + i}',false)"><img  src="../images/Remove-icon.png" alt=""><span><g:message code="question.answer.remove" /></span></a>
+                        <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + i}',false)"><img src="${resource(dir: 'images', file: 'Remove-icon.png')}" alt=""><span><g:message code="question.answer.remove" /></span></a>
                     </div>
                 </g:if>
             </div>
         </div>
-
         <g:set var="i" value="${i+1}"/>
     </g:each>
 </g:if>
@@ -26,10 +25,10 @@
             <h3>Answer ${Integer.valueOf(answerIndex)+1} :</h3>
             <g:textField name="answer" class="ans-text" required="required" value="${answerInstance?.answer}"/>
             <div class="radio-box">
-                <input class="radio1" name="correctAnswer" type="radio" name="radio" value="${answerIndex + 1}" checked="${answerInstance?.correctAnswer}"><label for="radio1"><span><span></span></span>Correct Answer</label>
+                <input class="radio1" name="correctAnswer" type="radio" name="radio" value="${Integer.valueOf(answerIndex) + 1}" ><label for="radio1"><span><span></span></span>Correct Answer</label>
             </div>
             <div class="remove-box">
-                <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + answerIndex}',true)"><img  src="../images/Remove-icon.png" alt=""><span><g:message code="question.answer.remove" /></span></a>
+                <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + answerIndex}',true)"><img src="${resource(dir: 'images', file: 'Remove-icon.png')}" alt=""><span><g:message code="question.answer.remove" /></span></a>
             </div>
         </div>
     </div>

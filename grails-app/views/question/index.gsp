@@ -19,13 +19,9 @@
 			<table>
 			<thead>
 					<tr>
-					
 						<g:sortableColumn property="description" title="${message(code: 'question.description.label', default: 'Description')}" />
-					
 						<th><g:message code="question.itemBank.label" default="Item Bank" /></th>
-					
 						<g:sortableColumn property="questionType" title="${message(code: 'question.questionType.label', default: 'Question Type')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
