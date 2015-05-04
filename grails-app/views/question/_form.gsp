@@ -48,23 +48,22 @@
     <div id="singleResponse">
         <g:render template="singleResponse" model="[answerIndex:0]" />
     </div>
-    <div class="extraField">
-        <label for="points">
-            <g:message code="question.points.label"  default="Points" />
-        </label>
-        <input type="number" name="points" required="required" value="${questionInstance?.points}"/>
+    <div class="add-ans">
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
     </div>
-    <a href="#" onclick="addAnswer('${questionType}');">
-        <g:message code="question.add.answer.label" default="Add Answer" />
-    </a>
+    <div class="points">
+        <h3><g:message code="question.answer.point.label"/> </h3>
+        <input type="number" name="points" min="1" max=""  value="${questionInstance?.points}" class="quant">
+    </div>
+
 </g:elseif>
 <g:elseif test="${questionType==QuestionType.REORDER.toString()}">
     <div id="reorder">
         <g:render template="reorder" model="[answerIndex:0]" />
     </div>
-    <a href="#" onclick="addAnswer('${questionType}');">
-        <g:message code="question.add.answer.label" default="Add Answer" />
-    </a>
+    <div class="add-ans">
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
+    </div>
 </g:elseif>
 <g:elseif test="${questionType==QuestionType.MATCHING.toString()}">
     <div id="match">

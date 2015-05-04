@@ -26,7 +26,7 @@
 					<g:render template="form" model="[questionType:questionType]"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" onclick="return validate('${questionType}');" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton class="submit" name="create" onclick="return validate('${questionType}');" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
             </g:form>
         </div>

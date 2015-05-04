@@ -3,8 +3,8 @@ th, td, caption {
     padding: 0;
     text-align: center;
     vertical-align: middle;
-    font-family:Verdana, Geneva, sans-serif; 
-    font-size:12px; 
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:12px;
 }
 h2 { margin:0;}
 
@@ -124,10 +124,12 @@ a:link, a:visited {text-decoration:none;}
 /*------------------------------------Multiple Choice---------------------------------------------*/
 
 .multi-form { float:left; margin:0 0 0 2%; width:98%;}
+.select-type h3 {font-family:'Open Sans'; font-size:16px; color:#4d4d4d; margin:3% 0 3% 0;  }
 .desc { float:left; margin:2% 0 0; width:100%;}
 .desc h3 {font-family:'Open Sans'; font-size:16px; color:#4d4d4d; margin:1% 0 0; float:left; }
 
 .text1 { border: 1px solid #4d4d4d; border-radius: 2px;  float: left;  margin:0 0 0 2%; padding:8px 0 8px 8px;  width: 56%;}
+.numberLarge { border: 1px solid #4d4d4d; border-radius: 2px;  float: left;  margin:0 0 0 5%; padding:8px 0 8px 8px;  width: 20%;}
 .text1:focus {  border-color: #21bc91; box-shadow: 0 0 8px #21bc91; outline: 0 none;}
 
 .itm-bnk { float:left; margin:2% 0 0; width:100%;}
@@ -228,7 +230,7 @@ input[type=radio]:not(old):checked +  label > span > span{
 /*----------------------------------single-response----------------------------------------*/
 
 .points { float:left; margin:3% 0 1%; width:100%;}
-.points h3 {font-family:'Open Sans'; font-size:14px; color:#4d4d4d; margin:1% 0 0; float:left; }
+.points h3 {font-family:'Open Sans'; font-size:16px; color:#4d4d4d; margin:1% 0 0; float:left; }
 .quant { float:left; margin:4px 0 0 5.2%; border:1px solid #4d4d4d; border-radius:2px; padding:2px; width:40px;}
 .quant:focus {  border-color: #21bc91; box-shadow: 0 0 4px #21bc91; outline: 0 none;}
 

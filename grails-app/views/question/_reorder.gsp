@@ -3,15 +3,15 @@
     <g:set var="count" value="${questionInstance.answers.size()}"/>
     <g:each in="${questionInstance.answers}" var="answerInstance">
         <div name="parent">
-            <div id="Create_${i}" class="fieldcontain ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
-                <label for="answer">
-                    <g:message code="question.answer.label" args="[Integer.valueOf(i)+1]" default="Answer ${Integer.valueOf(i) + 1}" />
-                </label>
-                <g:textField name="answer" required="required" value="${answerInstance?.answer}"/>
-                    <g:message code="question.answer.order.label" default="Order" />
+            <div id="Create_${i}" class="ans ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
+                <h3><g:message code="question.answer.label" args="[Integer.valueOf(i) +1]" /> </h3>
+                <g:textField name="answer" class="ans-text" required="required" value="${answerInstance?.answer}"/>
+                <g:message code="question.answer.order.label" default="Order" />
                 <input type="number" class="order" required="required" name="order" style="width: 10%" value="${answerInstance?.precedence}"   />
                 <g:if test="${count-1==i}">
-                    <a href="#" class="removeLink" onclick="removeOption('${'Create_' + i}',false)" ><g:message code="question.answer.remove" /></a>
+                    <div class="remove-box">
+                        <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + i}',false)"><img src="${resource(dir: 'images', file: 'Remove-icon.png')}" alt=""><span><g:message code="question.answer.remove" /></span></a>
+                    </div>
                 </g:if>
             </div>
         </div>
@@ -20,14 +20,16 @@
 </g:if>
 <g:else>
     <div name="parent">
-        <div id="Create_${answerIndex}" class="fieldcontain ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
-            <label for="answer">
-                <g:message code="question.answer.label" args="[Integer.valueOf(answerIndex)+1]" default="Answer ${Integer.valueOf(answerIndex) + 1}" />
-            </label>
-            <g:textField name="answer" required="required" value="${answerInstance?.precedence}"/>
-                <g:message code="question.answer.order.label" default="Order" />
-            <input type="number" class="order" required="required" style="width: 10%" name="order" checked="${answerInstance?.order}" value="" />
-            <a href="#" class="removeLink" onclick="removeOption( '${'Create_' + answerIndex}',true)" ><g:message code="question.answer.remove" /></a>
+        <div id="Create_${answerIndex}" class="ans ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
+            <h3><g:message code="question.answer.label" args="[Integer.valueOf(answerIndex) +1]" /> </h3>
+            <g:textField name="answer" class="ans-text" required="required" value="${answerInstance?.answer}"/>
+            <div class="order-box">
+                <h3><g:message code="question.answer.order.label" default="Order" /></h3>
+                <input type="number" name="order" min="1" max="" class="order">
+            </div>
+            <div class="remove-box">
+                <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + answerIndex}',true)"><img src="${resource(dir: 'images', file: 'Remove-icon.png')}" alt=""><span><g:message code="question.answer.remove" /></span></a>
+            </div>
         </div>
     </div>
 </g:else>
