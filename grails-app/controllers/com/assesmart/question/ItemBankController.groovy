@@ -37,13 +37,11 @@ class ItemBankController {
 
     @Transactional
     def save(ItemBank itemBankInstance) {
+        if(itemBankInstance.id==null && !(itemBankInstance.id>0)){
+            itemBankInstance.setCreatedDate(new Date())
+        }
         if (itemBankInstance == null) {
             notFound()
-            return
-        }
-
-        if (itemBankInstance.hasErrors()) {
-            respond itemBankInstance.errors, view: 'create'
             return
         }
 

@@ -26,7 +26,7 @@
                 <tbody>
                 <g:each in="${itemBankInstanceList}" status="i" var="itemBankInstance">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                        <td><g:link action="showByItemBank" id="${itemBankInstance.id}">${fieldValue(bean: itemBankInstance, field: "name")}</g:link></td>
+                        <td><g:link action="show" id="${itemBankInstance.id}">${fieldValue(bean: itemBankInstance, field: "name")}</g:link></td>
                     </tr>
                 </g:each>
 				</tbody>

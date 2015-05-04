@@ -5,6 +5,7 @@ package com.assesmart.question
  */
 class ItemBank {
     String name
+    Date createdDate
 
     static hasMany = [questions: Question]
 
