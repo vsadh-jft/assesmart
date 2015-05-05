@@ -26,7 +26,11 @@
 					
 						<g:sortableColumn property="name" title="${message(code: 'assessment.name.label', default: 'Name')}" />
 					
+						<th><g:message code="assessment.content.label" default="Content" /></th>
+					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'assessment.dateCreated.label', default: 'Date Created')}" />
+					
+						<th><g:message code="assessment.general.label" default="General" /></th>
 					
 						<g:sortableColumn property="isRuleBased" title="${message(code: 'assessment.isRuleBased.label', default: 'Is Rule Based')}" />
 					
@@ -40,7 +44,11 @@
 					
 						<td><g:link action="show" id="${assessmentInstance.id}">${fieldValue(bean: assessmentInstance, field: "name")}</g:link></td>
 					
+						<td>${fieldValue(bean: assessmentInstance, field: "content")}</td>
+					
 						<td><g:formatDate date="${assessmentInstance.dateCreated}" /></td>
+					
+						<td>${fieldValue(bean: assessmentInstance, field: "general")}</td>
 					
 						<td><g:formatBoolean boolean="${assessmentInstance.isRuleBased}" /></td>
 					

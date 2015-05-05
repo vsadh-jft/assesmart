@@ -1,5 +1,6 @@
 package com.assesmart.assesment
 
+import com.assesmart.co.AssessmentCO
 import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
@@ -20,11 +21,14 @@ class AssessmentController {
     }
 
     def create() {
-        respond new Assessment(params)
+        respond new AssessmentCO()
     }
 
     @Transactional
-    def save(Assessment assessmentInstance) {
+    def save(AssessmentCO assessmentInstance) {
+        println assessmentInstance.name
+        println assessmentInstance.contentCO.assessmentDescription
+        println assessmentInstance.name
         if (assessmentInstance == null) {
             notFound()
             return

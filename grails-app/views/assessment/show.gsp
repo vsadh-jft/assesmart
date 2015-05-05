@@ -43,11 +43,29 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${assessmentInstance?.content}">
+				<li class="fieldcontain">
+					<span id="content-label" class="property-label"><g:message code="assessment.content.label" default="Content" /></span>
+					
+						<span class="property-value" aria-labelledby="content-label"><g:link controller="content" action="show" id="${assessmentInstance?.content?.id}">${assessmentInstance?.content?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${assessmentInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="assessment.dateCreated.label" default="Date Created" /></span>
 					
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${assessmentInstance?.dateCreated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${assessmentInstance?.general}">
+				<li class="fieldcontain">
+					<span id="general-label" class="property-label"><g:message code="assessment.general.label" default="General" /></span>
+					
+						<span class="property-value" aria-labelledby="general-label"><g:link controller="general" action="show" id="${assessmentInstance?.general?.id}">${assessmentInstance?.general?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -66,6 +84,24 @@
 					<span id="lastUpdated-label" class="property-label"><g:message code="assessment.lastUpdated.label" default="Last Updated" /></span>
 					
 						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${assessmentInstance?.lastUpdated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${assessmentInstance?.proctor}">
+				<li class="fieldcontain">
+					<span id="proctor-label" class="property-label"><g:message code="assessment.proctor.label" default="Proctor" /></span>
+					
+						<span class="property-value" aria-labelledby="proctor-label"><g:link controller="proctor" action="show" id="${assessmentInstance?.proctor?.id}">${assessmentInstance?.proctor?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${assessmentInstance?.review}">
+				<li class="fieldcontain">
+					<span id="review-label" class="property-label"><g:message code="assessment.review.label" default="Review" /></span>
+					
+						<span class="property-value" aria-labelledby="review-label"><g:link controller="review" action="show" id="${assessmentInstance?.review?.id}">${assessmentInstance?.review?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

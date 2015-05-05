@@ -1,6 +1,13 @@
-package com.assesmart.assesment
+package com.assesmart.co
 
-class General {
+import com.assesmart.assesment.General
+import grails.validation.Validateable
+
+/**
+ * Created by vivekmaster146 on 5/5/15.
+ */
+@Validateable
+class GeneralCO {
 
     Boolean isStrictMode
 
@@ -28,14 +35,7 @@ class General {
 
     String externalResources
 
-    static belongsTo = [assessment: Assessment]
-
     static constraints = {
-        timeLimit nullable: true
-        autoSubmitTimeLimit nullable: true
-        noContinuationText nullable: true
-        passMark nullable: true
-        admittedURL nullable: true, blank: false
-        externalResources nullable: true, blank: false
+        importFrom General
     }
 }

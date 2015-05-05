@@ -4,7 +4,6 @@ package com.assesmart.assesment
  * Created by vivekmaster146 on 5/5/15.
  */
 class Assessment {
-    String id
     String name
     Date dateCreated
     Date lastUpdated
@@ -12,6 +11,7 @@ class Assessment {
     Set assessmentForms
 
     static hasMany = [assessmentForms: AssessmentForm]
+    static hasOne = [general: General, review: Review, content: Content, proctor: Proctor]
 
     static constraints = {
         name nullable: false, blank: false

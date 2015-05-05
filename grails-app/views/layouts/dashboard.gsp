@@ -59,14 +59,13 @@
             </div>
             <div class="clear"></div>
             <div class="in" id="report"> <a><img src="${resource(dir: 'images', file: 'rep.png')}" alt="" /></a>
-                <h2>Reports<img src="${resource(dir: 'images', file: 'd-but.png')}" alt="" /></h2>
+                <h2>Assessment<img src="${resource(dir: 'images', file: 'd-but.png')}" alt="" /></h2>
             </div>
             <div class="clear"></div>
             <div class="drop"  id="hidereport" style="display:none;">
-                <h2><a href="#">Report1</a></h2>
-                <h2><a href="#">Report2</a></h2>
-                <h2><a href="#">Report3</a></h2>
-                <h2><a href="#">Report4</a></h2>
+                <h2 class="create-icon"><g:link class="create" controller="assessment" action="create"><g:message code="assessment.create.label"/> </g:link></h2>
+
+                <h2 class="create-icon"><g:link class="create" controller="assessment" action="index"><g:message code="assessment.list.label"/> </g:link></h2>
             </div>
             <div class="clear"></div>
             <div class="in" onclick="window.location = $(this).find('h2 > a').attr('href');"> <a><img src="${resource(dir: 'images', file: 'out.png')}" alt="" /></a>

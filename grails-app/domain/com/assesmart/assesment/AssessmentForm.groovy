@@ -14,6 +14,7 @@ class AssessmentForm {
     static hasMany = [questions: Question]
     static belongsTo = [assessment:Assessment]
 
+
     static constraints = {
         name nullable: false
         noOfQuestions nullable: true
