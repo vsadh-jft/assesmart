@@ -27,7 +27,7 @@
         <g:render template="mutipleChoice" model="[answerIndex:0]"/>
     </div>
     <div class="add-ans">
-        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(<g:message code="question.answer.add.label" />)</span></a>
     </div>
 
 </g:if>
@@ -36,7 +36,7 @@
         <g:render template="multipleSelect" model="[answerIndex:0]" />
     </div>
     <div class="add-ans">
-        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(<g:message code="question.answer.add.label" />)</span></a>
     </div>
 </g:elseif>
 <g:elseif test="${questionType==QuestionType.ESSAY.toString()}">
@@ -49,7 +49,7 @@
         <g:render template="singleResponse" model="[answerIndex:0]" />
     </div>
     <div class="add-ans">
-        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(<g:message code="question.answer.add.label" />)</span></a>
     </div>
     <div class="points">
         <h3><g:message code="question.answer.point.label"/> </h3>
@@ -62,17 +62,17 @@
         <g:render template="reorder" model="[answerIndex:0]" />
     </div>
     <div class="add-ans">
-        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(<g:message code="question.answer.add.label" />)</span></a>
     </div>
 </g:elseif>
 <g:elseif test="${questionType==QuestionType.MATCHING.toString()}">
     <div id="match" class="match">
-        <h3>SOURCE</h3>
-        <h4>TARGET</h4>
+        <h3><g:message code="question.answer.source"/> </h3>
+        <h4><g:message code="question.answer.destination" /></h4>
         <g:render template="match" model="[answerIndex:0,sources:sources,destinations:destinations]" />
     </div>
     <div class="add-ans">
-        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(<g:message code="question.answer.add.label" />)</span></a>
     </div>
 </g:elseif>
 </div>

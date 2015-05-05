@@ -12,7 +12,6 @@
             <h2><g:message code="dashboard.heading.edit.question"/></h2>
         </div>
 		<div id="edit-question" class="content scaffold-edit" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -36,17 +35,12 @@
     </div>
     <script type="text/javascript">
         function validate(questionType){
-            console.debug("called...");
             var order;
             var returnFlag=true;
             var answerLength = document.getElementsByName("answer").length;
             var values = [];
             if(questionType=='MATCHING'){
-                console.debug("called if...");
                 $('.src-quant').each(function() {
-
-                    console.debug("src-quant each...");
-
                     if($(this).val()>answerLength || $(this).val()<1){
                         returnFlag = false;
                     }
