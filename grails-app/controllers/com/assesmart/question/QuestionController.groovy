@@ -111,7 +111,10 @@ class QuestionController {
         List<Answer> answers = questionInstance.answers;
         List<Answer> sources = answers.findAll {it.destinationId!=null}
         List<Answer> destination = answers.findAll {it.destinationId==null && it.indexNumber!=null}
-        [questionInstance:questionInstance,sources:sources,destination:destination]
+        println "size..."
+        println sources.size()
+        println destination.size()
+        [questionInstance:questionInstance,sources:sources,destination:destination,questionType: questionInstance.questionType]
     }
 
     @Transactional

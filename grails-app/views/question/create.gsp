@@ -38,7 +38,7 @@
             var answerLength = document.getElementsByName("answer").length;
             var values = [];
             if(questionType=='MATCHING'){
-                $('.link').each(function() {
+                $('.src-quant').each(function() {
                     if($(this).val()>answerLength || $(this).val()<1){
                         returnFlag = false;
                     }
@@ -47,7 +47,6 @@
                 });
             }else{
                 $('.order').each(function() {
-
                     order = $(this).val();
                     values.push(order);
                 });

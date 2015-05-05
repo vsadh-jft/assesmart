@@ -29,23 +29,42 @@
 					<g:render template="form" model="[sources:sources,destinations:destination]"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save" onclick="return validate();" action="save" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit class="save" onclick="return validate('${questionType}');" action="save" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>
             </g:form>
         </div>
     </div>
     <script type="text/javascript">
-        function validate(){
+        function validate(questionType){
+            console.debug("called...");
             var order;
-            var toExcludeItemIds = [];
-            $('.order').each(function() {
-                order = $(this).val();
-                toExcludeItemIds.push(order);
+            var returnFlag=true;
+            var answerLength = document.getElementsByName("answer").length;
+            var values = [];
+            if(questionType=='MATCHING'){
+                console.debug("called if...");
+                $('.src-quant').each(function() {
 
-            });
-            var len = toExcludeItemIds.length;
-            if(len> ($.unique(toExcludeItemIds).length)){
+                    console.debug("src-quant each...");
+
+                    if($(this).val()>answerLength || $(this).val()<1){
+                        returnFlag = false;
+                    }
+                    order = $(this).val();
+                    values.push(order);
+                });
+            }else{
+                $('.order').each(function() {
+                    order = $(this).val();
+                    values.push(order);
+                });
+            }
+            var len = values.length;
+            if(len> ($.unique(values).length)){
                 alert("Order should be unique")
+                return false;
+            }else if(returnFlag==false){
+                alert("Order should be in range")
                 return false;
             }else{
                 return true;

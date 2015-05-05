@@ -66,12 +66,14 @@
     </div>
 </g:elseif>
 <g:elseif test="${questionType==QuestionType.MATCHING.toString()}">
-    <div id="match">
+    <div id="match" class="match">
+        <h3>SOURCE</h3>
+        <h4>TARGET</h4>
         <g:render template="match" model="[answerIndex:0,sources:sources,destinations:destinations]" />
     </div>
-    <a href="#" onclick="addAnswer('${questionType}');">
-        <g:message code="question.add.answer.label" default="Add Answer" />
-    </a>
+    <div class="add-ans">
+        <a href="#" onclick="addAnswer('${questionType}');"><span>(ADD ANSWER)</span></a>
+    </div>
 </g:elseif>
 </div>
 <script type="text/javascript">

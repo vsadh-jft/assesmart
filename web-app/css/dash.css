@@ -250,6 +250,7 @@ input[type=radio]:not(old):checked +  label > span > span{
 .match-text { border: 1px solid #4d4d4d; border-radius: 2px;  float: left;  margin:0; padding:8px 0 8px 8px;  width:65%;}
 .match-text:focus {  border-color: #21bc91; box-shadow: 0 0 8px #21bc91; outline: 0 none;}
 .src-quant { float:left; margin:0 0 0 20px; border:1px solid #4d4d4d; border-radius:2px; padding:7px 4px 9px; width:40px;}
+.serial-match { float:left; margin:0 0 0 20px; padding:7px 4px 9px; width:40px;}
 .src-quant:focus {  border-color: #21bc91; box-shadow: 0 0 4px #21bc91; outline: 0 none;}
 .block1 { float:left; margin:2% 0 0; width:100%;} 
 .source-block { float:left; margin:0; width:50%;} 

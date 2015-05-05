@@ -160,8 +160,8 @@ class QuestionService {
         }
         for(int i=0;i<destinations.size();i++){
             Answer answer =new Answer();
-            answer.setAnswer(sources.get(i))
-            answer.setIndexNumber(i)
+            answer.setAnswer(destinations.get(i))
+            answer.setIndexNumber(i+1)
             answer.setQuestion(question)
             answersList.add(answer)
         }

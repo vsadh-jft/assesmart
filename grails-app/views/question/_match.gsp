@@ -3,17 +3,19 @@
     <g:set var="count" value="${sources.size()}"/>
     <g:each in="${sources}" var="source">
         <div name="parent">
-            <div id="Create_${i}" class="fieldcontain ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
-                <label for="source">
-                    <g:message code="question.answer.source" args="[Integer.valueOf(i)+1]" default="Source ${Integer.valueOf(i) + 1}" />
-                </label>
-                <g:textField name="answer" required="required" value="${sources?.get(i).answer}"/>
-                <input type="number" class="link" name="link" style="margin-right:5%;width: 4%" required="required" value="${sources?.get(i).destinationId}"/>
-                    <g:message code="question.answer.destination" args="[Integer.valueOf(i)+1]" default="Answer ${Integer.valueOf(i) + 1}" />
-                <g:textField name="destination" required="required" value="${destinations?.get(i).answer}"/>${i+1}
-                <g:if test="${count-1==i}">
-                    <a href="#" class="removeLink" onclick="removeOption('${'Create_' + i}',false)" ><g:message code="question.answer.remove" /></a>
-                </g:if>
+            <div id="Create_${i}">
+                <div class="block1">
+                    <div class="source-block">
+                        <input type="text" required="required" name="answer" value="${sources?.get(i).answer}" class="match-text">
+                        <input type="number" required="required" value="${sources?.get(i).destinationId}" name="link" min="1" max="" class="src-quant">
+                    </div>
+                    <div class="target-block">
+                        <input type="text" required="required" value="${destinations?.get(i).answer}" name="destination" class="match-text"><span class="serial-match">${Integer.valueOf(i)+1}</span>
+                        <div class="remove-box">
+                            <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + i}',true)"><img src="${resource(dir: 'images', file: 'Remove-icon.png')}" alt=""><span><g:message code="question.answer.remove" /></span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <g:set var="i" value="${i+1}"/>
@@ -21,15 +23,20 @@
 </g:if>
 <g:else>
     <div name="parent">
-        <div id="Create_${answerIndex}" class="fieldcontain ${hasErrors(bean: answerInstance, field: 'answer', 'error')} ">
-            <label for="source">
-                <g:message code="question.answer.source" args="[Integer.valueOf(answerIndex)+1]" default="Source ${Integer.valueOf(answerIndex) + 1}" />
-            </label>
-            <g:textField name="answer" required="required" value="${answerInstance?.answer}"/>
-            <input type="number" class="link" style="margin-right: 5%;width: 4%" name="link" required="required" />
-                <g:message code="question.answer.destination" args="[Integer.valueOf(answerIndex)+1]" default="Answer ${Integer.valueOf(answerIndex) + 1}" />
-            <g:textField  name="destination" required="required" value="${answerInstance?.answer}"/> ${Integer.valueOf(answerIndex)+1}
-            <a href="#" class="removeLink" onclick="removeOption( '${'Create_' + answerIndex}',true)" ><g:message code="question.answer.remove" /></a>
+        <div id="Create_${answerIndex}">
+            <div class="block1">
+                <div class="source-block">
+                    <input type="text" required="required" name="answer" class="match-text">
+                    <input type="number" required="required" name="link" min="1" max="" class="src-quant">
+                </div>
+                <div class="target-block">
+                    <input type="text" required="required" name="destination" class="match-text"><span class="serial-match">${Integer.valueOf(answerIndex)+1}</span>
+                    <div class="remove-box">
+                        <a href="#" class="removeLink " onclick="removeOption( '${'Create_' + answerIndex}',true)"><img src="${resource(dir: 'images', file: 'Remove-icon.png')}" alt=""><span><g:message code="question.answer.remove" /></span></a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </g:else>
