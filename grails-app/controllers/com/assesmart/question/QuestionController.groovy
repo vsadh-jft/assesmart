@@ -93,7 +93,6 @@ class QuestionController {
 
     def addAnswer(){
         String questionType = params.questionType
-        println params
         if(questionType==QuestionType.MULTIPLE_CHOICE.toString()){
             render template: 'mutipleChoice' , model: [answerIndex:params.answerIndex]
         }else if(questionType==QuestionType.MULTIPLE_SELECT.toString()){

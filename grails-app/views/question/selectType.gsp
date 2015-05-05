@@ -17,7 +17,7 @@
     <div class="bl">
         <h2>Manage questions</h2>
     </div>
-<div class="select-type multi-form">
+<div class="select-type">
       <h3>  <g:message code="question.questionType.label" default="Select a question Type" /></h3>
 
     <g:form url="[resource:questionInstance, action:'create']" >
@@ -30,7 +30,7 @@
             <g:select id="questionType" name="questionType" from="${com.assesmart.enumeration.QuestionType?.values()}" keys="${com.assesmart.enumeration.QuestionType.values()*.name()}" required=""  />
         </fieldset>
         <div class="proceed-butn">
-            <g:submitButton name="create" class="submit" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+            <g:submitButton name="create" class="submitCenter" value="${message(code: 'default.button.create.label', default: 'Create')}" />
         </div>
     </g:form>
     </div>
