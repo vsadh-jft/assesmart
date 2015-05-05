@@ -224,7 +224,7 @@ General:
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: generalInstance, field: 'isVariableScore', 'error')} ">
-    <label for="isVariableScore">
+    <label for="generalCO.isVariableScore">
         <g:message code="general.isVariableScore.label" default="Is Variable Score" />
 
     </label>
@@ -232,6 +232,94 @@ General:
 
 </div>
 
+Proctor:
+
+
+<div class="fieldcontain ${hasErrors(bean: proctorInstance, field: 'isBookingRequire', 'error')} ">
+    <label for="isBookingRequire">
+        <g:message code="proctor.isBookingRequire.label" default="Is Booking Require" />
+
+    </label>
+    <g:checkBox name="proctorCO.isBookingRequire" value="${proctorInstance?.isBookingRequire}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: proctorInstance, field: 'isProctorRequire', 'error')} ">
+    <label for="isProctorRequire">
+        <g:message code="proctor.isProctorRequire.label" default="Is Proctor Require" />
+
+    </label>
+    <g:checkBox name="proctorCO.isProctorRequire" value="${proctorInstance?.isProctorRequire}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: proctorInstance, field: 'isTimeWhilePaused', 'error')} ">
+    <label for="isTimeWhilePaused">
+        <g:message code="proctor.isTimeWhilePaused.label" default="Is Time While Paused" />
+
+    </label>
+    <g:checkBox name="proctorCO.isTimeWhilePaused" value="${proctorInstance?.isTimeWhilePaused}" />
+
+</div>
+
+
+Review:
+
+
+
+<div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'isAllowAnswerChanging', 'error')} ">
+    <label for="isAllowAnswerChanging">
+        <g:message code="review.isAllowAnswerChanging.label" default="Is Allow Answer Changing" />
+
+    </label>
+    <g:checkBox name="reviewCO.isAllowAnswerChanging" value="${reviewInstance?.isAllowAnswerChanging}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'isShowAnytime', 'error')} ">
+    <label for="isShowAnytime">
+        <g:message code="review.isShowAnytime.label" default="Is Show Anytime" />
+
+    </label>
+    <g:checkBox name="reviewCO.isShowAnytime" value="${reviewInstance?.isShowAnytime}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'isShowAsFlow', 'error')} ">
+    <label for="isShowAsFlow">
+        <g:message code="review.isShowAsFlow.label" default="Is Show As Flow" />
+
+    </label>
+    <g:checkBox name="reviewCO.isShowAsFlow" value="${reviewInstance?.isShowAsFlow}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'isShowNever', 'error')} ">
+    <label for="isShowNever">
+        <g:message code="review.isShowNever.label" default="Is Show Never" />
+
+    </label>
+    <g:checkBox name="reviewCO.isShowNever" value="${reviewInstance?.isShowNever}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'isShowOnce', 'error')} ">
+    <label for="isShowOnce">
+        <g:message code="review.isShowOnce.label" default="Is Show Once" />
+
+    </label>
+    <g:checkBox name="reviewCO.isShowOnce" value="${reviewInstance?.isShowOnce}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'isShowRationale', 'error')} ">
+    <label for="isShowRationale">
+        <g:message code="review.isShowRationale.label" default="Is Show Rationale" />
+
+    </label>
+    <g:checkBox name="reviewCO.isShowRationale" value="${reviewInstance?.isShowRationale}" />
+
+</div>
 
 
 
