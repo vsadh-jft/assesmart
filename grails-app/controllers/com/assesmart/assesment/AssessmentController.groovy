@@ -28,7 +28,11 @@ class AssessmentController {
     def save(AssessmentCO assessmentInstance) {
         println assessmentInstance.name
         println assessmentInstance.contentCO.assessmentDescription
-        println assessmentInstance.name
+        println assessmentInstance.generalCO.timeLimit
+
+        println assessmentInstance.contentCO
+        println assessmentInstance.generalCO
+
         if (assessmentInstance == null) {
             notFound()
             return
