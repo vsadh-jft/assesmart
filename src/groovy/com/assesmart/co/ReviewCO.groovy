@@ -9,6 +9,8 @@ import grails.validation.Validateable
 @Validateable
 class ReviewCO {
 
+    Integer identifier
+
     Boolean isAllowAnswerChanging
 
     Boolean isShowRationale

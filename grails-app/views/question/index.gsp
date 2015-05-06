@@ -12,7 +12,6 @@
             <h2><g:message code="dashboard.heading.list.questions"/></h2>
         </div>
 		<div id="mainContent" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>

@@ -1,6 +1,10 @@
 package com.assesmart.assesment
 
 import com.assesmart.co.AssessmentCO
+import com.assesmart.co.ContentCO
+import com.assesmart.co.GeneralCO
+import com.assesmart.co.ProctorCO
+import com.assesmart.co.ReviewCO
 import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
@@ -10,6 +14,7 @@ import grails.transaction.Transactional
 class AssessmentController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def assessmentService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -26,36 +31,43 @@ class AssessmentController {
 
     @Transactional
     def save(AssessmentCO assessmentInstance) {
+
+        Integer id = null
         println assessmentInstance.name
-        println assessmentInstance.contentCO.assessmentDescription
-        println assessmentInstance.generalCO.timeLimit
+        println assessmentInstance.isRuleBased
 
-        println assessmentInstance.contentCO
-        println assessmentInstance.generalCO
+        id =  assessmentService.createAssessment(assessmentInstance)
 
+        if(!(assessmentInstance?.id>0) && id>0){
+            flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Assessment'),id])
+        }else if(assessmentInstance?.id>0){
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Assessment'), id])
+        }
+        redirect action: 'index'
         if (assessmentInstance == null) {
             notFound()
             return
         }
-
-        if (assessmentInstance.hasErrors()) {
-            respond assessmentInstance.errors, view:'create'
-            return
-        }
-
-        assessmentInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'assessment.label', default: 'Assessment'), assessmentInstance.id])
-                redirect assessmentInstance
-            }
-            '*' { respond assessmentInstance, [status: CREATED] }
-        }
     }
 
     def edit(Assessment assessmentInstance) {
-        respond assessmentInstance
+        AssessmentCO assessmentCO = new AssessmentCO()
+        assessmentCO.id = assessmentInstance.id
+        assessmentCO.name = assessmentInstance.name
+        assessmentCO.isRuleBased = assessmentInstance.isRuleBased
+        ContentCO contentCO = new ContentCO()
+        GeneralCO generalCO = new GeneralCO()
+        ReviewCO reviewCO = new ReviewCO()
+        ProctorCO proctorCO = new ProctorCO()
+        bindData(contentCO, assessmentInstance.content.properties)
+        bindData(generalCO, assessmentInstance.general.properties)
+        bindData(reviewCO, assessmentInstance.review.properties)
+        bindData(proctorCO, assessmentInstance.proctor.properties)
+        assessmentCO.setContentCO(contentCO)
+        assessmentCO.setGeneralCO(generalCO)
+        assessmentCO.setProctorCO(proctorCO)
+        assessmentCO.setReviewCO(reviewCO)
+        [assessmentInstance:assessmentCO]
     }
 
     @Transactional

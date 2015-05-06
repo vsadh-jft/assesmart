@@ -9,6 +9,9 @@ import grails.validation.Validateable
 @Validateable
 class ContentCO {
 
+    Integer identifier
+    Integer assessmentId
+
     String assessmentDescription
 
     Boolean isDescriptionOnTop

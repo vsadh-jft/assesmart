@@ -262,3 +262,61 @@ input[type=radio]:not(old):checked +  label > span > span{
 
 .length { float:left; margin:4px 0 0 4.8%; border:1px solid #4d4d4d; border-radius:2px; padding:2px; width:40px;}
 .length:focus {  border-color: #21bc91; box-shadow: 0 0 4px #21bc91; outline: 0 none;}
+
+/*----------------------------------item-bank-list----------------------------------------*/
+
+.list1 { float:left; margin:3% 0 3% 2%; width:80%;}
+.list-head { float:left; margin:0; width:99.9%; border:1px solid #4d4d4d;}
+.list-head h2{ float:left; margin:0; width:47.3%; font-weight:bold; text-align:center;font-family:'Open Sans'; font-size:14px; color:#4d4d4d; border-right:1px solid #4d4d4d; padding:1.5% 0;  border-left:1px solid #4d4d4d; }
+.noborder { border:none !important;}
+
+.list-item { float:left; margin:0; width:100%; border-left:1px solid #4d4d4d; border-bottom:1px solid #4d4d4d;}
+
+.list-shw { float:left; margin:0; width:3%; padding:1%;}
+.list-shw a { text-decoration:none; margin:0;}
+.list-shw a img { margin:0; float:left; width:19px;}
+
+.list-shw2 { float:left; margin:0; width:2%; padding:1.5%;}
+.list-shw2 img { margin:0; float:left; width:19px; opacity:0; }
+
+.name1 { float:left; margin:0; width:43.3%; padding:1% 2%;  border-right:1px solid #4d4d4d; border-left:1px solid #4d4d4d; }
+.name1 p {float:left; margin:0; width:100%; font-family:'Open Sans'; font-size:14px; color:#4d4d4d;  text-align:center;}
+
+.date1 { float:left; margin:0; width:43.25%; padding:1% 2%;  border-right:1px solid #4d4d4d;}
+.date1 p { margin:0; width:100%; font-family:'Open Sans'; font-size:14px; color:#4d4d4d; text-align:center; }
+
+/*----------------------------------item-bank-show----------------------------------------*/
+
+.item-shw { float:left; margin:3% 0 0 2%; width:88%;}
+.shw-block1 { float:left; margin:0 0 2%; width:100%;}
+.shw-block1 h2{ float:left; margin:0; width:40%; font-family:'Open Sans'; font-size:14px; color:#4d4d4d; font-weight:bold;}
+.shw-block1 p{ float:left; margin:0; width:60%; font-family:'Open Sans'; font-size:14px; color:#4d4d4d; }
+
+.edit {font-family:'Open Sans';font-weight:bold; font-size:12px; color:#ffffff; background:#21bc91; padding:7px 16px; margin:3% 2% 3% 0; transition:all ease 0.5s; border:none;}
+.edit:hover {background:#272930; transition:all ease 0.5s; cursor:pointer; }
+
+/*----------------------------------question list----------------------------------------*/
+
+.qustn-list { float:left;  margin:3% 0 2% 2%; width:96%; border:1px solid #4d4d4d; }
+.qustn-head { float:left; margin:0; width:100%}
+.qustn-head h2{ float:left; margin:0; width:31.89%; font-family:'Open Sans'; font-size:14px; color:#4d4d4d; font-weight:bold; text-align:center; padding:1.5% 0; border-left:1px solid #4d4d4d;}
+.qustn-head p{ float:left; margin:0; width:2%; padding:1%; opacity:0; }
+.qustn-head p img{float:left; margin:0; width:20px;}
+
+.qustn-block1 { float:left; margin:0; width:100%; border-top:1px solid #4d4d4d;}
+.shw-cntnt { float:left; margin:0; width:2%; padding:1%;}
+.shw-cntnt a { margin:0; text-decoration:none;}
+.shw-cntnt img { float:left; margin:0; width:20px;}
+
+.descrptn { float:left; margin:0; width:31.9%; border-right:1px solid #4d4d4d; border-left:1px solid #4d4d4d; padding:1% 0;}
+.descrptn p{ float:left; margin:0; width:92%; font-family:'Open Sans'; font-size:14px; color:#4d4d4d;  text-align:center; padding:0 4%;}
+
+.descrptn2 { float:left; margin:0; width:31.9%; border-right:1px solid #4d4d4d; padding:1% 0;}
+.descrptn2 p{ float:left; margin:0; width:92%; font-family:'Open Sans'; font-size:14px; color:#4d4d4d;  text-align:center; padding:0 4%;}
+
+.descrptn3 { float:left; margin:0; width:31.5%; padding:1% 0;}
+.descrptn3 p{ float:left; margin:0; width:92%; font-family:'Open Sans'; font-size:14px; color:#4d4d4d;  text-align:center; padding:0 4%;}
+
+/*----------------------------------show question----------------------------------------*/
+
+.preview1 { float:left; margin:1% 0 0; width:58%; border:1px solid #4d4d4d; height:500px; border-radius:8px;}

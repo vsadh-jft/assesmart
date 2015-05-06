@@ -9,6 +9,8 @@ import grails.validation.Validateable
 @Validateable
 class GeneralCO {
 
+    Integer identifier
+
     Boolean isStrictMode
 
     Boolean isAllowChangeLanguage

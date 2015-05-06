@@ -1,13 +1,11 @@
 <%@ page import="com.assesmart.assesment.Assessment" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: assessmentInstance, field: 'name', 'error')} required">
-	<label for="name">
-		<g:message code="assessment.name.label" default="Name" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="name" required="" value="${assessmentInstance?.name}"/>
+    <label for="name">
+        <g:message code="assessment.name.label" default="Name" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="name" required="" value="${assessmentInstance?.name}"/>
 
 </div>
 
@@ -29,11 +27,11 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: assessmentInstance, field: 'isRuleBased', 'error')} ">
-	<label for="isRuleBased">
-		<g:message code="assessment.isRuleBased.label" default="Is Rule Based" />
-		
-	</label>
-	<g:checkBox name="isRuleBased" value="${assessmentInstance?.isRuleBased}" />
+    <label for="isRuleBased">
+        <g:message code="assessment.isRuleBased.label" default="Is Rule Based" />
+
+    </label>
+    <g:checkBox name="isRuleBased" value="${assessmentInstance?.isRuleBased}" />
 
 </div>
 Content:
@@ -43,7 +41,6 @@ Content:
 
     </label>
     <g:textField name="contentCO.assessmentDescription" value="${assessmentInstance?.contentCO?.assessmentDescription}"/>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: contentInstance, field: 'assessmentText', 'error')} ">
@@ -51,8 +48,7 @@ Content:
         <g:message code="content.assessmentText.label" default="Assessment Text" />
 
     </label>
-    <g:textField name="contentCO.assessmentText" value="${contentInstance?.assessmentText}"/>
-
+    <g:textField name="contentCO.assessmentText" value="${assessmentInstance?.contentCO?.assessmentText}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: contentInstance, field: 'assessmentFailedMessage', 'error')} required">
@@ -60,8 +56,7 @@ Content:
         <g:message code="content.assessmentFailedMessage.label" default="Assessment Failed Message" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="contentCO.assessmentFailedMessage" required="" value="${contentInstance?.assessmentFailedMessage}"/>
-
+    <g:textField name="contentCO.assessmentFailedMessage" required="" value="${assessmentInstance?.contentCO?.assessmentFailedMessage}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: contentInstance, field: 'assessmentPassedMessage', 'error')} required">
@@ -69,7 +64,7 @@ Content:
         <g:message code="content.assessmentPassedMessage.label" default="Assessment Passed Message" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="contentCO.assessmentPassedMessage" required="" value="${contentInstance?.assessmentPassedMessage}"/>
+    <g:textField name="contentCO.assessmentPassedMessage" required="" value="${assessmentInstance?.contentCO?.assessmentPassedMessage}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: contentInstance, field: 'perQuestionReviewText', 'error')} ">
@@ -77,7 +72,7 @@ Content:
         <g:message code="content.perQuestionReviewText.label" default="Per Question Review Text" />
 
     </label>
-    <g:textField name="contentCO.perQuestionReviewText" value="${contentInstance?.perQuestionReviewText}"/>
+    <g:textField name="contentCO.perQuestionReviewText" value="${assessmentInstance?.contentCO?.perQuestionReviewText}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: contentInstance, field: 'messageUnscoredOrUnderReview', 'error')} required">
@@ -85,7 +80,7 @@ Content:
         <g:message code="content.messageUnscoredOrUnderReview.label" default="Message Unscored Or Under Review" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="contentCO.messageUnscoredOrUnderReview" required="" value="${contentInstance?.messageUnscoredOrUnderReview}"/>
+    <g:textField name="contentCO.messageUnscoredOrUnderReview" required="" value="${assessmentInstance?.contentCO?.messageUnscoredOrUnderReview}"/>
 </div>
 
 
@@ -94,7 +89,7 @@ Content:
         <g:message code="content.isAgreementRequired.label" default="Is Agreement Required" />
 
     </label>
-    <g:checkBox name="contentCO.isAgreementRequired" value="${contentInstance?.isAgreementRequired}" />
+    <g:checkBox name="contentCO.isAgreementRequired" value="${assessmentInstance?.contentCO?.isAgreementRequired}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: contentInstance, field: 'isDescriptionOnTop', 'error')} ">
@@ -102,12 +97,10 @@ Content:
         <g:message code="content.isDescriptionOnTop.label" default="Is Description On Top" />
 
     </label>
-    <g:checkBox name="contentCO.isDescriptionOnTop" value="${contentInstance?.isDescriptionOnTop}" />
+    <g:checkBox name="contentCO.isDescriptionOnTop" value="${assessmentInstance?.contentCO?.isDescriptionOnTop}" />
 </div>
 
 General:
-
-
 
 <%@ page import="com.assesmart.assesment.General" %>
 
@@ -118,7 +111,7 @@ General:
         <g:message code="general.timeLimit.label" default="Time Limit" />
 
     </label>
-    <g:field name="generalCO.timeLimit" type="number" value="${generalInstance?.timeLimit}"/>
+    <g:field name="generalCO.timeLimit" type="number" value="${assessmentInstance?.generalCO?.timeLimit}"/>
 
 </div>
 
@@ -127,7 +120,7 @@ General:
         <g:message code="general.autoSubmitTimeLimit.label" default="Auto Submit Time Limit" />
 
     </label>
-    <g:field name="generalCO.autoSubmitTimeLimit" type="number" value="${generalInstance?.autoSubmitTimeLimit}"/>
+    <g:field name="generalCO.autoSubmitTimeLimit" type="number" value="${assessmentInstance?.generalCO?.autoSubmitTimeLimit}"/>
 
 </div>
 
@@ -136,7 +129,7 @@ General:
         <g:message code="general.noContinuationText.label" default="No Continuation Text" />
 
     </label>
-    <g:textField name="generalCO.noContinuationText" value="${generalInstance?.noContinuationText}"/>
+    <g:textField name="generalCO.noContinuationText" value="${assessmentInstance?.generalCO?.noContinuationText}"/>
 
 </div>
 
@@ -154,7 +147,7 @@ General:
         <g:message code="general.admittedURL.label" default="Admitted URL" />
 
     </label>
-    <g:textField name="generalCO.admittedURL" value="${generalInstance?.admittedURL}"/>
+    <g:textField name="generalCO.admittedURL" value="${assessmentInstance?.generalCO?.admittedURL}"/>
 
 </div>
 
@@ -163,7 +156,7 @@ General:
         <g:message code="general.externalResources.label" default="External Resources" />
 
     </label>
-    <g:textField name="generalCO.externalResources" value="${generalInstance?.externalResources}"/>
+    <g:textField name="generalCO.externalResources" value="${assessmentInstance?.generalCO?.externalResources}"/>
 
 </div>
 
@@ -174,7 +167,7 @@ General:
         <g:message code="general.isAllowChangeLanguage.label" default="Is Allow Change Language" />
 
     </label>
-    <g:checkBox name="generalCO.isAllowChangeLanguage" value="${generalInstance?.isAllowChangeLanguage}" />
+    <g:checkBox name="generalCO.isAllowChangeLanguage" value="${assessmentInstance?.generalCO?.isAllowChangeLanguage}" />
 
 </div>
 
@@ -183,7 +176,7 @@ General:
         <g:message code="general.isDisableURLSecurity.label" default="Is Disable URLS ecurity" />
 
     </label>
-    <g:checkBox name="generalCO.isDisableURLSecurity" value="${generalInstance?.isDisableURLSecurity}" />
+    <g:checkBox name="generalCO.isDisableURLSecurity" value="${assessmentInstance?.generalCO?.isDisableURLSecurity}" />
 
 </div>
 
@@ -192,7 +185,7 @@ General:
         <g:message code="general.isHidePauseButton.label" default="Is Hide Pause Button" />
 
     </label>
-    <g:checkBox name="generalCO.isHidePauseButton" value="${generalInstance?.isHidePauseButton}" />
+    <g:checkBox name="generalCO.isHidePauseButton" value="${assessmentInstance?.generalCO?.isHidePauseButton}" />
 
 </div>
 
@@ -201,7 +194,7 @@ General:
         <g:message code="general.isSendMail.label" default="Is Send Mail" />
 
     </label>
-    <g:checkBox name="generalCO.isSendMail" value="${generalInstance?.isSendMail}" />
+    <g:checkBox name="generalCO.isSendMail" value="${assessmentInstance?.generalCO?.isSendMail}" />
 
 </div>
 
@@ -210,7 +203,7 @@ General:
         <g:message code="general.isStrictMode.label" default="Is Strict Mode" />
 
     </label>
-    <g:checkBox name="generalCO.isStrictMode" value="${generalInstance?.isStrictMode}" />
+    <g:checkBox name="generalCO.isStrictMode" value="${assessmentInstance?.generalCO?.isStrictMode}" />
 
 </div>
 
@@ -219,7 +212,7 @@ General:
         <g:message code="general.isTotalScore.label" default="Is Total Score" />
 
     </label>
-    <g:checkBox name="generalCO.isTotalScore" value="${generalInstance?.isTotalScore}" />
+    <g:checkBox name="generalCO.isTotalScore" value="${assessmentInstance?.generalCO?.isTotalScore}" />
 
 </div>
 
@@ -228,7 +221,7 @@ General:
         <g:message code="general.isVariableScore.label" default="Is Variable Score" />
 
     </label>
-    <g:checkBox name="generalCO.isVariableScore" value="${generalInstance?.isVariableScore}" />
+    <g:checkBox name="generalCO.isVariableScore" value="${assessmentInstance?.generalCO?.isVariableScore}" />
 
 </div>
 
@@ -240,7 +233,7 @@ Proctor:
         <g:message code="proctor.isBookingRequire.label" default="Is Booking Require" />
 
     </label>
-    <g:checkBox name="proctorCO.isBookingRequire" value="${proctorInstance?.isBookingRequire}" />
+    <g:checkBox name="proctorCO.isBookingRequire" value="${assessmentInstance?.proctorCO?.isBookingRequire}" />
 
 </div>
 
@@ -249,7 +242,7 @@ Proctor:
         <g:message code="proctor.isProctorRequire.label" default="Is Proctor Require" />
 
     </label>
-    <g:checkBox name="proctorCO.isProctorRequire" value="${proctorInstance?.isProctorRequire}" />
+    <g:checkBox name="proctorCO.isProctorRequire" value="${assessmentInstance?.proctorCO?.isProctorRequire}" />
 
 </div>
 
@@ -258,7 +251,7 @@ Proctor:
         <g:message code="proctor.isTimeWhilePaused.label" default="Is Time While Paused" />
 
     </label>
-    <g:checkBox name="proctorCO.isTimeWhilePaused" value="${proctorInstance?.isTimeWhilePaused}" />
+    <g:checkBox name="proctorCO.isTimeWhilePaused" value="${assessmentInstance?.proctorCO?.isTimeWhilePaused}" />
 
 </div>
 
@@ -272,7 +265,7 @@ Review:
         <g:message code="review.isAllowAnswerChanging.label" default="Is Allow Answer Changing" />
 
     </label>
-    <g:checkBox name="reviewCO.isAllowAnswerChanging" value="${reviewInstance?.isAllowAnswerChanging}" />
+    <g:checkBox name="reviewCO.isAllowAnswerChanging" value="${assessmentInstance?.reviewCO?.isAllowAnswerChanging}" />
 
 </div>
 
@@ -281,7 +274,7 @@ Review:
         <g:message code="review.isShowAnytime.label" default="Is Show Anytime" />
 
     </label>
-    <g:checkBox name="reviewCO.isShowAnytime" value="${reviewInstance?.isShowAnytime}" />
+    <g:checkBox name="reviewCO.isShowAnytime" value="${assessmentInstance?.reviewCO?.isShowAnytime}" />
 
 </div>
 
@@ -290,7 +283,7 @@ Review:
         <g:message code="review.isShowAsFlow.label" default="Is Show As Flow" />
 
     </label>
-    <g:checkBox name="reviewCO.isShowAsFlow" value="${reviewInstance?.isShowAsFlow}" />
+    <g:checkBox name="reviewCO.isShowAsFlow" value="${assessmentInstance?.reviewCO?.isShowAsFlow}" />
 
 </div>
 
@@ -299,7 +292,7 @@ Review:
         <g:message code="review.isShowNever.label" default="Is Show Never" />
 
     </label>
-    <g:checkBox name="reviewCO.isShowNever" value="${reviewInstance?.isShowNever}" />
+    <g:checkBox name="reviewCO.isShowNever" value="${assessmentInstance?.reviewCO?.isShowNever}" />
 
 </div>
 
@@ -308,7 +301,7 @@ Review:
         <g:message code="review.isShowOnce.label" default="Is Show Once" />
 
     </label>
-    <g:checkBox name="reviewCO.isShowOnce" value="${reviewInstance?.isShowOnce}" />
+    <g:checkBox name="reviewCO.isShowOnce" value="${assessmentInstance?.reviewCO?.isShowOnce}" />
 
 </div>
 
@@ -317,7 +310,7 @@ Review:
         <g:message code="review.isShowRationale.label" default="Is Show Rationale" />
 
     </label>
-    <g:checkBox name="reviewCO.isShowRationale" value="${reviewInstance?.isShowRationale}" />
+    <g:checkBox name="reviewCO.isShowRationale" value="${assessmentInstance?.reviewCO?.isShowRationale}" />
 
 </div>
 

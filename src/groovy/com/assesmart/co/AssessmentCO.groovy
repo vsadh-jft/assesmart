@@ -18,6 +18,7 @@ class AssessmentCO {
     GeneralCO generalCO
     ReviewCO reviewCO
     ProctorCO proctorCO
+    Integer id
 
     static hasMany = [assessmentForms: AssessmentForm]
 

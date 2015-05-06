@@ -9,6 +9,8 @@ import grails.validation.Validateable
 @Validateable
 class ProctorCO {
 
+    Integer identifier
+
     Boolean isBookingRequire
 
     Boolean isProctorRequire
