@@ -226,8 +226,10 @@ input[type=radio]:not(old):checked +  label > span > span{
 .add-ans > a:hover span{ float:left; margin:2px 0 0 4px; width:auto; font-family:'Open Sans'; font-size:13px; color:#4d4d4d; background:url(../images/add2.png) no-repeat left center; background-size:18px; padding:2px 0 2px 24px;transition:all ease 0.5s; }
 
 .submit {font-family:'Open Sans';font-weight:bold; font-size:12px; color:#ffffff; background:#21bc91; padding:6px 16px; margin:3% 30%; transition:all ease 0.5s; border:none;width: 20%}
+.submitDelete {font-family:'Open Sans';font-weight:bold; font-size:12px; color:#ffffff; background:#21bc91; padding:6px 16px; margin:3% 0; transition:all ease 0.5s; border:none;}
 .submitCenter {font-family:'Open Sans';font-weight:bold; font-size:12px; color:#ffffff; background:#21bc91; padding:6px 16px; margin:3% 0; transition:all ease 0.5s; border:none;width: 20%}
 .submit:hover {background:#272930; transition:all ease 0.5s; cursor:pointer; }
+.submitDelete:hover {background:#272930; transition:all ease 0.5s; cursor:pointer; }
 
 /*----------------------------------single-response----------------------------------------*/
 
@@ -295,6 +297,10 @@ input[type=radio]:not(old):checked +  label > span > span{
 .edit {font-family:'Open Sans';font-weight:bold; font-size:12px; color:#ffffff; background:#21bc91; padding:7px 16px; margin:3% 2% 3% 0; transition:all ease 0.5s; border:none;}
 .edit:hover {background:#272930; transition:all ease 0.5s; cursor:pointer; }
 
+.view-all { float:right; margin:0; width:auto;}
+.view-all a { margin:0; width:auto; text-decoration:none;font-family:'Open Sans';font-weight:bold; font-size:12px; color:#21bc91; background:none; transition:all ease 0.5s;}
+.view-all a:hover { color:#4d4d4d; transition:all ease 0.5s; }
+
 /*----------------------------------question list----------------------------------------*/
 
 .qustn-list { float:left;  margin:3% 0 2% 2%; width:96%; border:1px solid #4d4d4d; }
@@ -319,4 +325,55 @@ input[type=radio]:not(old):checked +  label > span > span{
 
 /*----------------------------------show question----------------------------------------*/
 
-.preview1 { float:left; margin:1% 0 0; width:58%; border:1px solid #4d4d4d; height:500px; border-radius:8px;}
+.preview1 { float:left; margin:1% 0 0; width:58%; border:1px solid #4d4d4d; height:300px; border-radius:8px;}
+
+.message {
+    padding: 0;
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 80%;
+}
+
+.message {
+    font-size: 1.1em;
+    line-height: 2;
+    padding: 0.25em;
+}
+
+.message {
+    background: #f3f3ff;
+    border: 1px solid #b2d1ff;
+    color: #006dba;
+    -moz-box-shadow: 0 0 0.25em #b2d1ff;
+    -webkit-box-shadow: 0 0 0.25em #b2d1ff;
+    box-shadow: 0 0 0.25em #b2d1ff;
+}
+
+
+
+
+/*-------------------------------------Dash-------------------------------------*/
+
+.pagination {
+    border-top: 0;
+    margin: 0;
+    padding: 0.3em 0.2em;
+    text-align: center;
+}
+
+.pagination a,
+.pagination .currentStep {
+    color: #666666;
+    display: inline-block;
+    margin: 0 0.1em;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+}
+
+.pagination a:hover, .pagination a:focus,
+.pagination .currentStep {
+    background-color: #999999;
+    color: #ffffff;
+    outline: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}

@@ -57,6 +57,7 @@ class ItemBankController {
     }
 
     def edit(ItemBank itemBankInstance) {
+
         respond itemBankInstance
     }
 

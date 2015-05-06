@@ -15,32 +15,36 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
-			<thead>
-					<tr>
-						<g:sortableColumn property="description" title="${message(code: 'question.description.label', default: 'Description')}" />
-						<th><g:message code="question.itemBank.label" default="Item Bank" /></th>
-						<g:sortableColumn property="questionType" title="${message(code: 'question.questionType.label', default: 'Question Type')}" />
-					</tr>
-				</thead>
-				<tbody>
+            <div class="qustn-list">
+                <div class="qustn-head">
+                    <p></p>
+                    <h2><g:message code="questionList.description.label"/> </h2>
+                    <h2><g:message code="questionList.itemBank.label"/></h2>
+                    <h2><g:message code="questionList.questionType.label"/></h2>
+                </div>
 				<g:each in="${questionInstanceList}" status="i" var="questionInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${questionInstance.id}">${fieldValue(bean: questionInstance, field: "description")}</g:link></td>
-					
-						<td>${fieldValue(bean: questionInstance, field: "itemBank")}</td>
-					
-						<td>${fieldValue(bean: questionInstance, field: "questionType")}</td>
-					
-					</tr>
+
+
+                    <div class="qustn-block1">
+                        <div class="shw-cntnt">
+                            <g:link action="show" id="${questionInstance.id}"> <img src="${resource(dir: 'images', file: 'show2.png')}" alt=""></g:link>
+                        </div>
+                        <div class="descrptn">
+                            <p>${fieldValue(bean: questionInstance, field: "description")}</p>
+                        </div>
+                        <div class="descrptn2">
+                            <p>${fieldValue(bean: questionInstance, field: "itemBank")}</p>
+                        </div>
+                        <div class="descrptn3">
+                            <p>${fieldValue(bean: questionInstance, field: "questionType")}</p>
+                        </div>
+                    </div>
 				</g:each>
-				</tbody>
-			</table>
 			<div class="pagination">
 				<g:paginate total="${questionInstanceCount ?: 0}" />
 			</div>
             </div>
+		</div>
 		</div>
 	</body>
 </html>
