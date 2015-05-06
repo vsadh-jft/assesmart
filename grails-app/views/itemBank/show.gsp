@@ -18,15 +18,15 @@
 			</g:if>
             <div class="item-shw">
                 <div class="shw-block1">
-                    <h2>NAME :</h2>
+                    <h2><g:message code="itemBank.show.name.label" /></h2>
                     <p>${itemBankInstance?.name}</p>
                 </div>
                 <div class="shw-block1">
-                    <h2>CREATED DATE :</h2>
+                    <h2><g:message code="itemBank.show.createdDate.label" /></h2>
                     <p>${itemBankInstance?.createdDate}</p>
                 </div>
                 <div class="shw-block1">
-                    <h2>NO. OF QUESTIONS :</h2>
+                    <h2><g:message code="itemBank.show.noOfQuestions.label" /></h2>
                     <p>${itemBankInstance?.questions.size()}</p>
                 </div>
                 <div class="clear"></div>
@@ -36,10 +36,9 @@
                 <div class="clear"></div>
 
                 <g:form url="[resource:itemBankInstance, action:'delete']" method="DELETE">
-                    <fieldset class="buttons">
-                        <g:link class="edit"  action="edit" resource="${itemBankInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                        <g:actionSubmit class="submitDelete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                    </fieldset>
+                    <g:link controller="question" action="selectType" class="edit"   params="[itemBank:itemBankInstance?.id]"><g:message code="itemBank.add.question" default="Add Question" /></g:link>
+                    <g:link class="edit"  action="edit" resource="${itemBankInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                    <g:actionSubmit class="submitDelete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </g:form>
             </div>
         </div>

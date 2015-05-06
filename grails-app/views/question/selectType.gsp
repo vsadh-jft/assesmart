@@ -21,6 +21,7 @@
       <h3>  <g:message code="question.questionType.label" default="Select a question Type" /></h3>
 
     <g:form url="[resource:questionInstance, action:'create']" >
+        <g:hiddenField name="itemBankId" value="${itemBankId}" />
         <script type="text/javascript">
             $(function () {
                 $("#questionType").selectbox();

@@ -18,19 +18,19 @@
 			</g:if>
             <div class="item-shw">
                 <div class="shw-block1">
-                    <h2>DESCRIPTION :</h2>
+                    <h2><g:message code="question.show.name.label" /></h2>
                     <p>${questionInstance?.description}</p>
                 </div>
                 <div class="shw-block1">
-                    <h2>ITEM BANK :</h2>
+                    <h2><g:message code="question.show.itemBank.label" /></h2>
                     <p>${questionInstance?.itemBank}</p>
                 </div>
                 <div class="shw-block1">
-                    <h2>QUESTION TYPE :</h2>
+                    <h2><g:message code="question.show.questionType.label" /></h2>
                     <p>${questionInstance?.questionType}</p>
                 </div>
                 <div class="shw-block1">
-                    <h2>QUESTION PREVIEW :</h2>
+                    <h2><g:message code="question.show.preview.label" /></h2>
                     <div class="preview1">
                     </div>
                 </div>

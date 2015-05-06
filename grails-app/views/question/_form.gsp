@@ -1,22 +1,29 @@
-<%@ page import="com.assesmart.question.Question;com.assesmart.enumeration.QuestionType" %>
+<%@ page import="com.assesmart.question.ItemBank; com.assesmart.question.Question;com.assesmart.enumeration.QuestionType" %>
 <div class="multi-form">
 <div class="desc">
     <h3><g:message code="question.description.label"/> </h3>
     <g:textField name="description" class="text1" required="" value="${questionInstance?.description}"/>
 </div>
-
-    <div class="itm-bnk">
-        <h3>Item Bank :</h3>
-        <div class="select2">
-            <g:select id="itemBank" class="select2" name="itemBank.id" from="${com.assesmart.question.ItemBank.list()}" optionKey="id" required="" value="${questionInstance?.itemBank?.id}" />
-            <script type="text/javascript">
-                $(function () {
-                    $("#itemBank").selectbox();
-                });
-            </script>
+    <g:if test="${itemBankId}">
+        <div class="itm-bnk">
+        <g:hiddenField name="itemBank.id" value="${itemBankId}" />
+        <h3><g:message code="question.itemBank.label" /> </h3>
+            <h3 style="margin-left: 3%">${ItemBank.get(itemBankId).name}</h3>
         </div>
-    </div>
-
+    </g:if>
+    <g:else>
+        <div class="itm-bnk">
+            <h3><g:message code="question.itemBank.label" /></h3>
+            <div class="select2">
+                <g:select id="itemBank" class="select2" name="itemBank.id" from="${com.assesmart.question.ItemBank.list()}" optionKey="id" required="" value="${questionInstance?.itemBank?.id}" />
+                <script type="text/javascript">
+                    $(function () {
+                        $("#itemBank").selectbox();
+                    });
+                </script>
+            </div>
+        </div>
+    </g:else>
 
 <g:hiddenField name="questionType" value="${questionType!=null?questionType:questionInstance.questionType}" />
 <g:if test="${questionInstance?.id>0}">

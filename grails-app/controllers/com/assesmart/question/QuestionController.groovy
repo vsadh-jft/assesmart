@@ -23,12 +23,13 @@ class QuestionController {
     }
 
     def selectType(){
-
+        println params
+                [itemBankId:params.itemBank]
     }
 
     def create() {
         println params
-        [questionType:params.questionType]
+        [questionType:params.questionType,itemBankId:params.itemBankId]
     }
 
     @Transactional
